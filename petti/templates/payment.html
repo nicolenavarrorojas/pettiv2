@@ -1,0 +1,485 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment - Petti</title>
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-logo">
+        <a href="index.html" class="logo-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#021059" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="logo-icon">
+            <path d="M18 19v-5.5a1.5 1.5 0 0 0-3 0v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 0-3 0v10.5a1.5 1.5 0 0 1-3 0v-8a1.5 1.5 0 0 0-3 0V19"></path>
+          </svg>
+          <span class="logo-text">Petti</span>
+          <span class="user-status">Anonymous user</span>
+        </a>
+      </div>
+      
+      <div class="navbar-menu">
+        <a href="index.html" class="menu-item">Home</a>
+        <a href="services.html" class="menu-item">Services</a>
+        <a href="admin.html" class="menu-item admin-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="admin-icon">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path>
+          </svg>
+          Admin
+        </a>
+        <a href="login.html" class="menu-item">Login</a>
+        <a href="register.html" class="button primary-button">Register</a>
+      </div>
+      
+      <button class="mobile-menu-button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="menu-icon">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    
+    <div class="mobile-menu">
+      <a href="index.html" class="mobile-menu-item">Home</a>
+      <a href="services.html" class="mobile-menu-item">Services</a>
+      <a href="admin.html" class="mobile-menu-item admin-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="admin-icon">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path>
+        </svg>
+        Admin
+      </a>
+      <a href="login.html" class="mobile-menu-item">Login</a>
+      <a href="register.html" class="mobile-menu-item register-button">Register</a>
+    </div>
+  </nav>
+
+  <main class="main-content payment-page">
+    <div class="container">
+      <div class="payment-process">
+        <div class="payment-steps">
+          <div class="payment-step active" data-step="1">
+            <div class="step-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+            </div>
+            <span class="step-label">Schedule</span>
+          </div>
+          
+          <div class="step-line"></div>
+          
+          <div class="payment-step" data-step="2">
+            <div class="step-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                <line x1="1" y1="10" x2="23" y2="10"></line>
+              </svg>
+            </div>
+            <span class="step-label">Payment</span>
+          </div>
+          
+          <div class="step-line"></div>
+          
+          <div class="payment-step" data-step="3">
+            <div class="step-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </div>
+            <span class="step-label">Confirmation</span>
+          </div>
+        </div>
+        
+        <div class="payment-card">
+          <!-- Step 1: Schedule -->
+          <div class="payment-section active" id="scheduleSection">
+            <h2 class="payment-title">Schedule Your Service</h2>
+            
+            <div class="service-info" id="serviceInfo">
+              <div class="service-image">
+                <img src="https://images.unsplash.com/photo-1535268647677-300dbf3d78d1" alt="Service" id="serviceImg" class="service-img">
+              </div>
+              <div class="service-details">
+                <h3 class="service-name" id="serviceName">Premium Pet Grooming</h3>
+                <p class="service-price" id="serviceBasePrice">$35/hour</p>
+              </div>
+            </div>
+            
+            <form id="scheduleForm" class="schedule-form">
+              <div class="form-group">
+                <label for="date" class="form-label">Select Date</label>
+                <input type="date" id="date" class="form-input" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="time" class="form-label">Select Time</label>
+                <input type="time" id="time" class="form-input" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="hours" class="form-label">Duration (hours)</label>
+                <select id="hours" class="form-input" required>
+                  <option value="1">1 hour</option>
+                  <option value="2">2 hours</option>
+                  <option value="3">3 hours</option>
+                  <option value="4">4 hours</option>
+                  <option value="5">5 hours</option>
+                </select>
+              </div>
+              
+              <div class="order-summary">
+                <div class="order-total">
+                  <span class="total-label">Total Price:</span>
+                  <span class="total-amount" id="totalPrice">$35.00</span>
+                </div>
+              </div>
+              
+              <div class="form-actions">
+                <button type="button" id="continueToPayment" class="button primary-button full-width">Continue to Payment</button>
+              </div>
+            </form>
+          </div>
+          
+          <!-- Step 2: Payment -->
+          <div class="payment-section" id="paymentSection">
+            <h2 class="payment-title">Payment Details</h2>
+            
+            <div class="order-summary payment-summary">
+              <h3 class="summary-title">Order Summary</h3>
+              <div class="summary-details">
+                <div class="summary-row">
+                  <span class="summary-label" id="summaryService">Premium Pet Grooming</span>
+                  <span class="summary-value" id="summaryRate">$35/hour</span>
+                </div>
+                <div class="summary-row">
+                  <span class="summary-label">Duration</span>
+                  <span class="summary-value" id="summaryDuration">1 hour</span>
+                </div>
+                <div class="summary-total">
+                  <span class="total-label">Total</span>
+                  <span class="total-amount" id="summaryTotal">$35.00</span>
+                </div>
+              </div>
+            </div>
+            
+            <form id="paymentForm" class="payment-form">
+              <div class="form-group">
+                <label for="cardName" class="form-label">Name on Card</label>
+                <input type="text" id="cardName" placeholder="John Doe" class="form-input" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="cardNumber" class="form-label">Card Number</label>
+                <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" class="form-input" required>
+              </div>
+              
+              <div class="form-row">
+                <div class="form-group half">
+                  <label for="expiry" class="form-label">Expiry Date</label>
+                  <input type="text" id="expiry" placeholder="MM/YY" class="form-input" required>
+                </div>
+                
+                <div class="form-group half">
+                  <label for="cvc" class="form-label">CVC</label>
+                  <input type="text" id="cvc" placeholder="123" class="form-input" required>
+                </div>
+              </div>
+              
+              <div class="form-actions">
+                <button type="button" id="backToSchedule" class="button secondary-button">Back</button>
+                <button type="button" id="completePayment" class="button primary-button">Complete Payment</button>
+              </div>
+            </form>
+          </div>
+          
+          <!-- Step 3: Confirmation -->
+          <div class="payment-section" id="confirmationSection">
+            <div class="confirmation-content">
+              <div class="confirmation-status" id="processingPayment">
+                <div class="loading-spinner"></div>
+                <h2 class="confirmation-title">Processing your payment...</h2>
+                <p class="confirmation-message">Please wait while we confirm your booking.</p>
+              </div>
+              
+              <div class="confirmation-status success-status" id="paymentSuccess" style="display: none;">
+                <div class="success-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                  </svg>
+                </div>
+                <h2 class="confirmation-title">Payment Successful!</h2>
+                <p class="confirmation-message" id="confirmationMessage">Your booking for Premium Pet Grooming has been confirmed.</p>
+                
+                <div class="booking-details">
+                  <h3 class="booking-title">Booking Details</h3>
+                  <div class="booking-info">
+                    <div class="booking-item">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                      </svg>
+                      <span id="confirmationDate">Date not set</span>
+                    </div>
+                    <div class="booking-item">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                      </svg>
+                      <span id="confirmationTime">Time not set (1 hour)</span>
+                    </div>
+                    <div class="booking-item total-price">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                        <line x1="1" y1="10" x2="23" y2="10"></line>
+                      </svg>
+                      <span id="confirmationTotal">Total: $35.00</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <a href="index.html" class="button primary-button">Back to Home</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="no-service" id="noServiceSelected" style="display: none;">
+        <p class="no-service-text">No service selected.</p>
+        <a href="services.html" class="button primary-button">Browse Services</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="logo-icon">
+            <path d="M18 19v-5.5a1.5 1.5 0 0 0-3 0v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 0-3 0v10.5a1.5 1.5 0 0 1-3 0v-8a1.5 1.5 0 0 0-3 0V19"></path>
+          </svg>
+          <span class="footer-brand">Petti</span>
+        </div>
+        <p class="footer-text">Professional pet care services to keep your pets happy and healthy.</p>
+        <div class="footer-social">
+          <a href="#" class="social-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
+          </a>
+          <a href="#" class="social-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+          <a href="#" class="social-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-menu">
+        <div class="footer-column">
+          <h3 class="footer-heading">Services</h3>
+          <ul class="footer-links">
+            <li><a href="services.html">Pet Grooming</a></li>
+            <li><a href="services.html">Dog Walking</a></li>
+            <li><a href="services.html">Pet Sitting</a></li>
+            <li><a href="services.html">Pet Training</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3 class="footer-heading">Company</h3>
+          <ul class="footer-links">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Our Team</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3 class="footer-heading">Support</h3>
+          <ul class="footer-links">
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Petti. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Sample services data (in a real app, this would come from a backend API)
+    const allServices = [
+      {
+        id: 1,
+        title: "Premium Pet Grooming",
+        description: "Professional grooming service including bath, haircut, nail trimming, and ear cleaning.",
+        price: 35,
+        image: "https://images.unsplash.com/photo-1535268647677-300dbf3d78d1",
+        category: "grooming"
+      },
+      {
+        id: 2,
+        title: "Daily Dog Walking",
+        description: "Regular walks for your dog to stay healthy and happy while you're busy.",
+        price: 20,
+        image: "https://images.unsplash.com/photo-1452378174528-3090a4bba7b2",
+        category: "walking"
+      },
+      {
+        id: 3,
+        title: "Overnight Pet Sitting",
+        description: "Loving care for your pets in your home while you're away. Includes feeding, play time, and companionship.",
+        price: 45,
+        image: "https://images.unsplash.com/photo-1582562124811-c09040d0a901",
+        category: "sitting"
+      }
+    ];
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mobile menu toggle
+      document.querySelector('.mobile-menu-button').addEventListener('click', function() {
+        document.querySelector('.mobile-menu').classList.toggle('active');
+        this.classList.toggle('active');
+      });
+      
+      // Get service ID from URL parameters
+      const params = new URLSearchParams(window.location.search);
+      const serviceId = params.get('service');
+      
+      let selectedService = null;
+      let hours = 1;
+      let totalPrice = 0;
+      
+      if (serviceId) {
+        selectedService = allServices.find(s => s.id === parseInt(serviceId));
+        
+        if (selectedService) {
+          // Set initial values
+          document.getElementById('serviceImg').src = selectedService.image;
+          document.getElementById('serviceName').textContent = selectedService.title;
+          document.getElementById('serviceBasePrice').textContent = `$${selectedService.price}/hour`;
+          totalPrice = selectedService.price;
+          document.getElementById('totalPrice').textContent = `$${totalPrice.toFixed(2)}`;
+          
+          // Set summary values
+          document.getElementById('summaryService').textContent = selectedService.title;
+          document.getElementById('summaryRate').textContent = `$${selectedService.price}/hour`;
+          document.getElementById('summaryDuration').textContent = `${hours} hour`;
+          document.getElementById('summaryTotal').textContent = `$${totalPrice.toFixed(2)}`;
+          
+          // Set confirmation message
+          document.getElementById('confirmationMessage').textContent = `Your booking for ${selectedService.title} has been confirmed.`;
+          document.getElementById('confirmationTotal').textContent = `Total: $${totalPrice.toFixed(2)}`;
+        } else {
+          document.querySelector('.payment-process').style.display = 'none';
+          document.getElementById('noServiceSelected').style.display = 'block';
+        }
+      } else {
+        document.querySelector('.payment-process').style.display = 'none';
+        document.getElementById('noServiceSelected').style.display = 'block';
+      }
+      
+      // Hours selection changes price
+      document.getElementById('hours').addEventListener('change', function() {
+        hours = parseInt(this.value);
+        
+        if (selectedService) {
+          totalPrice = selectedService.price * hours;
+          document.getElementById('totalPrice').textContent = `$${totalPrice.toFixed(2)}`;
+          
+          // Update summary
+          document.getElementById('summaryDuration').textContent = `${hours} hour${hours > 1 ? 's' : ''}`;
+          document.getElementById('summaryTotal').textContent = `$${totalPrice.toFixed(2)}`;
+          
+          // Update confirmation
+          document.getElementById('confirmationTotal').textContent = `Total: $${totalPrice.toFixed(2)}`;
+        }
+      });
+      
+      // Process steps
+      document.getElementById('continueToPayment').addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const dateField = document.getElementById('date');
+        const timeField = document.getElementById('time');
+        
+        if (!dateField.value || !timeField.value) {
+          alert('Please select both date and time');
+          return;
+        }
+        
+        // Update steps
+        document.querySelector('.payment-step[data-step="1"]').classList.remove('active');
+        document.querySelector('.payment-step[data-step="2"]').classList.add('active');
+        
+        // Show payment section
+        document.getElementById('scheduleSection').classList.remove('active');
+        document.getElementById('paymentSection').classList.add('active');
+        
+        // Update confirmation details
+        document.getElementById('confirmationDate').textContent = dateField.value;
+        document.getElementById('confirmationTime').textContent = `${timeField.value} (${hours} hour${hours > 1 ? 's' : ''})`;
+      });
+      
+      document.getElementById('backToSchedule').addEventListener('click', function() {
+        // Update steps
+        document.querySelector('.payment-step[data-step="2"]').classList.remove('active');
+        document.querySelector('.payment-step[data-step="1"]').classList.add('active');
+        
+        // Show schedule section
+        document.getElementById('paymentSection').classList.remove('active');
+        document.getElementById('scheduleSection').classList.add('active');
+      });
+      
+      document.getElementById('completePayment').addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const cardName = document.getElementById('cardName');
+        const cardNumber = document.getElementById('cardNumber');
+        const expiry = document.getElementById('expiry');
+        const cvc = document.getElementById('cvc');
+        
+        if (!cardName.value || !cardNumber.value || !expiry.value || !cvc.value) {
+          alert('Please fill in all payment details');
+          return;
+        }
+        
+        // Update steps
+        document.querySelector('.payment-step[data-step="2"]').classList.remove('active');
+        document.querySelector('.payment-step[data-step="3"]').classList.add('active');
+        
+        // Show confirmation section
+        document.getElementById('paymentSection').classList.remove('active');
+        document.getElementById('confirmationSection').classList.add('active');
+        
+        // Simulate payment processing
+        setTimeout(function() {
+          document.getElementById('processingPayment').style.display = 'none';
+          document.getElementById('paymentSuccess').style.display = 'block';
+        }, 2000);
+      });
+    });
+  </script>
+</body>
+</html>

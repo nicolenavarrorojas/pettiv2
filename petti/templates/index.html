@@ -68,8 +68,8 @@
       <h1 class="hero-title">Servicios profesionales de cuidado de mascotas a domicilio</h1>
       <p class="hero-subtitle">Cuidado confiable, seguro y amoroso para tus familiares peludos</p>
       <div class="hero-buttons">
-        <a href="services.html" class="button primary-button">Ver Servicios</a>
-        <a href="register.html" class="button secondary-button">Regístrate Ahora</a>
+        <a href="{% url 'services' %}" class="button primary-button">Ver Servicios</a>
+        <a href="{% url 'register' %}" class="button secondary-button">Regístrate Ahora</a>
       </div>
     </div>
     <div class="hero-image">
@@ -93,7 +93,7 @@
           <p class="service-description">Servicio de aseo profesional que incluye baño, corte de pelo, corte de uñas y limpieza de oídos.</p>
           <div class="service-footer">
             <span class="service-price">$35</span>
-            <a href="payment.html?service=1" class="button small-button">Reservar Ahora</a>
+            <a href="{% url 'services' %}" class="button small-button">Reservar Ahora</a>
           </div>
         </div>
       </div>
@@ -105,7 +105,7 @@
           <p class="service-description">Paseos regulares para mantener a tu perro feliz y saludable mientras estás ocupado.</p>
           <div class="service-footer">
             <span class="service-price">$20</span>
-            <a href="payment.html?service=2" class="button small-button">Reservar Ahora</a>
+            <a href="{% url 'services' %}" class="button small-button">Reservar Ahora</a>
           </div>
         </div>
       </div>
@@ -117,7 +117,7 @@
           <p class="service-description">Cuidado amoroso para tus mascotas en tu hogar mientras estás fuera. Incluye alimentación, tiempo de juego y compañía.</p>
           <div class="service-footer">
             <span class="service-price">$45</span>
-            <a href="payment.html?service=3" class="button small-button">Reservar Ahora</a>
+            <a href="{% url 'services' %}" class="button small-button">Reservar Ahora</a>
           </div>
         </div>
       </div>
@@ -161,7 +161,7 @@
   <div class="container">
     <h2 class="cta-title">¿Listo para consentir a tu mascota?</h2>
     <p class="cta-subtitle">Únete a Petti hoy y dale a tu peludo el cuidado que se merece.</p>
-    <a href="register.html" class="button accent-button">Regístrate Ahora</a>
+    <a href="{% url 'register' %}" class="button accent-button">Regístrate Ahora</a>
   </div>
 </section>
 

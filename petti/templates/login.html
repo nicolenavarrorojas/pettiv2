@@ -75,15 +75,21 @@
             <h1 class="login-title">Login</h1>
           </div>
           
-          <form id="loginForm" class="login-form">
+          <form id="loginForm" method="post" class="login-form">
+            {% csrf_token %}
             <div class="form-group">
               <label for="email" class="form-label">Email</label>
-              <input type="email" id="email" placeholder="your@email.com" class="form-input" required>
+              <input type="email" id="email" name="username" placeholder="your@email.com" class="form-input" required>
             </div>
             
             <div class="form-group">
+
               <label for="password" class="form-label">Contraseña</label>
               <input type="password" id="password" placeholder="••••••••" class="form-input" required>
+
+              <label for="password" class="form-label">Password</label>
+              <input type="password" id="password" name="password" placeholder="••••••••" class="form-input" required>
+
             </div>
             
             <div class="form-options">
@@ -95,7 +101,17 @@
               <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
             </div>
             
+
             <button type="submit" class="button primary-button full-width">Inicia sesion</button>
+
+            <button type="submit" class="button primary-button full-width">Sign In</button>
+            {% if form.errors %}
+            <p>
+              El nombre de usuario y contraseña no coinciden. Por favor
+              inténtelo nuevamente.
+            </p>
+            {% endif %}
+
           </form>
           
           <div class="login-footer">
@@ -175,16 +191,6 @@
     document.querySelector('.mobile-menu-button').addEventListener('click', function() {
       document.querySelector('.mobile-menu').classList.toggle('active');
       this.classList.toggle('active');
-    });
-
-    document.getElementById('loginForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-      
-      // In a real app, this would handle authentication
-      console.log('Login attempt with:', { email, password });
-      alert('Login attempt received. This would authenticate in a real application.');
     });
   </script>
 </body>

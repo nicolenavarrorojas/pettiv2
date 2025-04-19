@@ -62,208 +62,185 @@
   
    <!--BODY -->
   <main class="main-content payment-page">
-    <div class="container">
-      <div class="payment-process">
-        <div class="payment-steps">
-          <div class="payment-step active" data-step="1">
-            <div class="step-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                <line x1="16" y1="2" x2="16" y2="6"></line>
-                <line x1="8" y1="2" x2="8" y2="6"></line>
-                <line x1="3" y1="10" x2="21" y2="10"></line>
-              </svg>
-            </div>
-            <span class="step-label">Schedule</span>
+  <div class="container">
+    <div class="payment-process">
+      <div class="payment-steps">
+        <div class="payment-step active" data-step="1">
+          <div class="step-icon">
+            <!-- ícono calendario -->
           </div>
-          
-          <div class="step-line"></div>
-          
-          <div class="payment-step" data-step="2">
-            <div class="step-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
-                <line x1="1" y1="10" x2="23" y2="10"></line>
-              </svg>
-            </div>
-            <span class="step-label">Payment</span>
-          </div>
-          
-          <div class="step-line"></div>
-          
-          <div class="payment-step" data-step="3">
-            <div class="step-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-            </div>
-            <span class="step-label">Confirmation</span>
-          </div>
+          <span class="step-label">Agenda</span>
         </div>
-        
-        <div class="payment-card">
-          <!-- Step 1: Schedule -->
-          <div class="payment-section active" id="scheduleSection">
-            <h2 class="payment-title">Schedule Your Service</h2>
-            
-            <div class="service-info" id="serviceInfo">
-              <div class="service-image">
-                <img src="https://images.unsplash.com/photo-1535268647677-300dbf3d78d1" alt="Service" id="serviceImg" class="service-img">
-              </div>
-              <div class="service-details">
-                <h3 class="service-name" id="serviceName">Premium Pet Grooming</h3>
-                <p class="service-price" id="serviceBasePrice">$35/hour</p>
+
+        <div class="step-line"></div>
+
+        <div class="payment-step" data-step="2">
+          <div class="step-icon">
+            <!-- ícono tarjeta -->
+          </div>
+          <span class="step-label">Pago</span>
+        </div>
+
+        <div class="step-line"></div>
+
+        <div class="payment-step" data-step="3">
+          <div class="step-icon">
+            <!-- ícono check -->
+          </div>
+          <span class="step-label">Confirmación</span>
+        </div>
+      </div>
+
+      <div class="payment-card">
+        <!-- Paso 1: Agenda -->
+        <div class="payment-section active" id="scheduleSection">
+          <h2 class="payment-title">Agenda tu servicio</h2>
+
+          <div class="service-info" id="serviceInfo">
+            <div class="service-image">
+              <img src="https://images.unsplash.com/photo-1535268647677-300dbf3d78d1" alt="Servicio" id="serviceImg" class="service-img">
+            </div>
+            <div class="service-details">
+              <h3 class="service-name" id="serviceName">Peluquería Premium para Mascotas</h3>
+              <p class="service-price" id="serviceBasePrice">$35/hora</p>
+            </div>
+          </div>
+
+          <form id="scheduleForm" class="schedule-form">
+            <div class="form-group">
+              <label for="date" class="form-label">Selecciona la fecha</label>
+              <input type="date" id="date" class="form-input" required>
+            </div>
+
+            <div class="form-group">
+              <label for="time" class="form-label">Selecciona la hora</label>
+              <input type="time" id="time" class="form-input" required>
+            </div>
+
+            <div class="form-group">
+              <label for="hours" class="form-label">Duración (horas)</label>
+              <select id="hours" class="form-input" required>
+                <option value="1">1 hora</option>
+                <option value="2">2 horas</option>
+                <option value="3">3 horas</option>
+                <option value="4">4 horas</option>
+                <option value="5">5 horas</option>
+              </select>
+            </div>
+
+            <div class="order-summary">
+              <div class="order-total">
+                <span class="total-label">Precio total:</span>
+                <span class="total-amount" id="totalPrice">$35.00</span>
               </div>
             </div>
-            
-            <form id="scheduleForm" class="schedule-form">
-              <div class="form-group">
-                <label for="date" class="form-label">Select Date</label>
-                <input type="date" id="date" class="form-input" required>
+
+            <div class="form-actions">
+              <button type="button" id="continueToPayment" class="button primary-button full-width">Continuar al pago</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Paso 2: Pago -->
+        <div class="payment-section" id="paymentSection">
+          <h2 class="payment-title">Detalles de pago</h2>
+
+          <div class="order-summary payment-summary">
+            <h3 class="summary-title">Resumen del pedido</h3>
+            <div class="summary-details">
+              <div class="summary-row">
+                <span class="summary-label" id="summaryService">Peluquería Premium para Mascotas</span>
+                <span class="summary-value" id="summaryRate">$35/hora</span>
               </div>
-              
-              <div class="form-group">
-                <label for="time" class="form-label">Select Time</label>
-                <input type="time" id="time" class="form-input" required>
+              <div class="summary-row">
+                <span class="summary-label">Duración</span>
+                <span class="summary-value" id="summaryDuration">1 hora</span>
               </div>
-              
-              <div class="form-group">
-                <label for="hours" class="form-label">Duration (hours)</label>
-                <select id="hours" class="form-input" required>
-                  <option value="1">1 hour</option>
-                  <option value="2">2 hours</option>
-                  <option value="3">3 hours</option>
-                  <option value="4">4 hours</option>
-                  <option value="5">5 hours</option>
-                </select>
-              </div>
-              
-              <div class="order-summary">
-                <div class="order-total">
-                  <span class="total-label">Total Price:</span>
-                  <span class="total-amount" id="totalPrice">$35.00</span>
-                </div>
-              </div>
-              
-              <div class="form-actions">
-                <button type="button" id="continueToPayment" class="button primary-button full-width">Continue to Payment</button>
-              </div>
-            </form>
-          </div>
-          
-          <!-- Step 2: Payment -->
-          <div class="payment-section" id="paymentSection">
-            <h2 class="payment-title">Payment Details</h2>
-            
-            <div class="order-summary payment-summary">
-              <h3 class="summary-title">Order Summary</h3>
-              <div class="summary-details">
-                <div class="summary-row">
-                  <span class="summary-label" id="summaryService">Premium Pet Grooming</span>
-                  <span class="summary-value" id="summaryRate">$35/hour</span>
-                </div>
-                <div class="summary-row">
-                  <span class="summary-label">Duration</span>
-                  <span class="summary-value" id="summaryDuration">1 hour</span>
-                </div>
-                <div class="summary-total">
-                  <span class="total-label">Total</span>
-                  <span class="total-amount" id="summaryTotal">$35.00</span>
-                </div>
+              <div class="summary-total">
+                <span class="total-label">Total</span>
+                <span class="total-amount" id="summaryTotal">$35.00</span>
               </div>
             </div>
-            
-            <form id="paymentForm" class="payment-form">
-              <div class="form-group">
-                <label for="cardName" class="form-label">Name on Card</label>
-                <input type="text" id="cardName" placeholder="John Doe" class="form-input" required>
-              </div>
-              
-              <div class="form-group">
-                <label for="cardNumber" class="form-label">Card Number</label>
-                <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" class="form-input" required>
-              </div>
-              
-              <div class="form-row">
-                <div class="form-group half">
-                  <label for="expiry" class="form-label">Expiry Date</label>
-                  <input type="text" id="expiry" placeholder="MM/YY" class="form-input" required>
-                </div>
-                
-                <div class="form-group half">
-                  <label for="cvc" class="form-label">CVC</label>
-                  <input type="text" id="cvc" placeholder="123" class="form-input" required>
-                </div>
-              </div>
-              
-              <div class="form-actions">
-                <button type="button" id="backToSchedule" class="button secondary-button">Back</button>
-                <button type="button" id="completePayment" class="button primary-button">Complete Payment</button>
-              </div>
-            </form>
           </div>
-          
-          <!-- Step 3: Confirmation -->
-          <div class="payment-section" id="confirmationSection">
-            <div class="confirmation-content">
-              <div class="confirmation-status" id="processingPayment">
-                <div class="loading-spinner"></div>
-                <h2 class="confirmation-title">Processing your payment...</h2>
-                <p class="confirmation-message">Please wait while we confirm your booking.</p>
+
+          <form id="paymentForm" class="payment-form">
+            <div class="form-group">
+              <label for="cardName" class="form-label">Nombre en la tarjeta</label>
+              <input type="text" id="cardName" placeholder="Juan Pérez" class="form-input" required>
+            </div>
+
+            <div class="form-group">
+              <label for="cardNumber" class="form-label">Número de tarjeta</label>
+              <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" class="form-input" required>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group half">
+                <label for="expiry" class="form-label">Fecha de vencimiento</label>
+                <input type="text" id="expiry" placeholder="MM/AA" class="form-input" required>
               </div>
-              
-              <div class="confirmation-status success-status" id="paymentSuccess" style="display: none;">
-                <div class="success-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                  </svg>
-                </div>
-                <h2 class="confirmation-title">Payment Successful!</h2>
-                <p class="confirmation-message" id="confirmationMessage">Your booking for Premium Pet Grooming has been confirmed.</p>
-                
-                <div class="booking-details">
-                  <h3 class="booking-title">Booking Details</h3>
-                  <div class="booking-info">
-                    <div class="booking-item">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                        <line x1="16" y1="2" x2="16" y2="6"></line>
-                        <line x1="8" y1="2" x2="8" y2="6"></line>
-                        <line x1="3" y1="10" x2="21" y2="10"></line>
-                      </svg>
-                      <span id="confirmationDate">Date not set</span>
-                    </div>
-                    <div class="booking-item">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <polyline points="12 6 12 12 16 14"></polyline>
-                      </svg>
-                      <span id="confirmationTime">Time not set (1 hour)</span>
-                    </div>
-                    <div class="booking-item total-price">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
-                        <line x1="1" y1="10" x2="23" y2="10"></line>
-                      </svg>
-                      <span id="confirmationTotal">Total: $35.00</span>
-                    </div>
+
+              <div class="form-group half">
+                <label for="cvc" class="form-label">CVC</label>
+                <input type="text" id="cvc" placeholder="123" class="form-input" required>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="button" id="backToSchedule" class="button secondary-button">Volver</button>
+              <button type="button" id="completePayment" class="button primary-button">Completar pago</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Paso 3: Confirmación -->
+        <div class="payment-section" id="confirmationSection">
+          <div class="confirmation-content">
+            <div class="confirmation-status" id="processingPayment">
+              <div class="loading-spinner"></div>
+              <h2 class="confirmation-title">Procesando tu pago...</h2>
+              <p class="confirmation-message">Por favor espera mientras confirmamos tu reserva.</p>
+            </div>
+
+            <div class="confirmation-status success-status" id="paymentSuccess" style="display: none;">
+              <div class="success-icon">
+                <!-- ícono de éxito -->
+              </div>
+              <h2 class="confirmation-title">¡Pago exitoso!</h2>
+              <p class="confirmation-message" id="confirmationMessage">Tu reserva para Peluquería Premium para Mascotas ha sido confirmada.</p>
+
+              <div class="booking-details">
+                <h3 class="booking-title">Detalles de la reserva</h3>
+                <div class="booking-info">
+                  <div class="booking-item">
+                    <!-- ícono calendario -->
+                    <span id="confirmationDate">Fecha no establecida</span>
+                  </div>
+                  <div class="booking-item">
+                    <!-- ícono reloj -->
+                    <span id="confirmationTime">Hora no establecida (1 hora)</span>
+                  </div>
+                  <div class="booking-item total-price">
+                    <!-- ícono tarjeta -->
+                    <span id="confirmationTotal">Total: $35.00</span>
                   </div>
                 </div>
-                
-                <a href="index.html" class="button primary-button">Back to Home</a>
               </div>
+
+              <a href="index.html" class="button primary-button">Volver al inicio</a>
             </div>
           </div>
         </div>
       </div>
-      
-      <div class="no-service" id="noServiceSelected" style="display: none;">
-        <p class="no-service-text">No service selected.</p>
-        <a href="services.html" class="button primary-button">Browse Services</a>
-      </div>
     </div>
-  </main>
+
+    <div class="no-service" id="noServiceSelected" style="display: none;">
+      <p class="no-service-text">No se ha seleccionado ningún servicio.</p>
+      <a href="services.html" class="button primary-button">Ver servicios</a>
+    </div>
+  </div>
+</main>
+
 
   <footer class="footer">
     <div class="container">

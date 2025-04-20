@@ -20,7 +20,11 @@
             <path d="M18 19v-5.5a1.5 1.5 0 0 0-3 0v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 0-3 0v10.5a1.5 1.5 0 0 1-3 0v-8a1.5 1.5 0 0 0-3 0V19"></path>
           </svg>
           <span class="logo-text">Petti</span>
-          <span class="user-status">¡Hola, [nombre de usuario]!</span>
+            {% if user.is_authenticated %}
+            <span class="user-status">¡Hola, {{ user.email }}!</span>
+            {% else %}
+            <span class="user-status">Hola, usuario anónimo</span>
+            {% endif %}
         </a>
       </div>
       

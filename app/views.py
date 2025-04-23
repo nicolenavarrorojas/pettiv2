@@ -1,6 +1,6 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.urls import reverse
 from app import forms
 
@@ -39,6 +39,10 @@ def register(request):
 
 def services(request):
     return render(request, 'services.html')
+
+def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('index'))
 
 def admin_dashboard(request):
     return render(request, 'admin-dashboard.html')

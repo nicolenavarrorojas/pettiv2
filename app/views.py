@@ -47,8 +47,5 @@ def logout_view(request):
 def admin_dashboard(request):
     return render(request, 'admin-dashboard.html')
 
-def admin_view(request):
-    return render(request, 'admin.html')
-
 def payment(request):
     return render(request, 'payment.html')

@@ -226,18 +226,6 @@
   </footer>
 
   <script>
-    // Auth check and redirect
-    document.addEventListener('DOMContentLoaded', function() {
-      const isAdmin = localStorage.getItem('isAdmin') === 'true';
-      
-      if (!isAdmin) {
-        showToast('Authentication required. Please login as administrator', 'error');
-        setTimeout(() => {
-          window.location.href = 'admin.html';
-        }, 2000);
-      }
-    });
-  
     // Mobile menu toggle
     document.querySelector('.mobile-menu-button').addEventListener('click', function() {
       document.querySelector('.mobile-menu').classList.toggle('active');

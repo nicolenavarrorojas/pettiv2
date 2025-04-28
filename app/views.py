@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.contrib.auth import login, authenticate, logout
 from django.urls import reverse
 from app import forms
+from app.utils import check_administrator
 
 def index(request):
     return render(request, 'index.html')
@@ -44,6 +45,7 @@ def logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse('index'))
 
+@check_administrator
 def admin_dashboard(request):
     return render(request, 'admin-dashboard.html')
 

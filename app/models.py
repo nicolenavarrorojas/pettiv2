@@ -19,3 +19,32 @@ class User(AbstractUser):
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
+
+
+class Service(models.Model):
+    GROOMING = 'grooming'
+    WALKING = 'walking'
+    SITTING = 'sitting'
+    SERVICE_TYPE_CHOICES = (
+        (GROOMING, 'estética'),
+        (WALKING, 'paseo'),
+        (SITTING, 'cuidado'),
+    )
+    service_type = models.CharField(
+        choices=SERVICE_TYPE_CHOICES,
+        default=GROOMING,
+        max_length=30
+    )
+
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+    price = models.IntegerField()
+    partner = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='services'
+    )
+
+    def __str__(self):
+        return self.service_type
+    

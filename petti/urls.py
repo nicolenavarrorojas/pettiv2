@@ -28,5 +28,11 @@ urlpatterns = [
     path('admin-dashboard/', views.admin_dashboard, name='admin_dashboard'),
     path('payment/', views.payment, name='payment'),
     path('logout/', views.logout_view, name='logout'),
+
+    path('add-service/', views.logout_view, name='add_service'),
+    path('client-profile/', views.logout_view, name='client_profile'),
+    path('partner-profile-form/', views.logout_view, name='partner_profile_form'),
+    path('partner-profile/', views.logout_view, name='partner_profile'),
+    path('partner-public-view/', views.logout_view, name='partner_public_view'),
 ]
 

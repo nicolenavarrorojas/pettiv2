@@ -51,3 +51,22 @@ def admin_dashboard(request):
 
 def payment(request):
     return render(request, 'payment.html')
+
+
+
+def add_service(request):
+    return render(request, 'add_service.html')
+
+def client_profile(request):
+    return render(request, 'client_profile.html')
+
+def partner_profile_form(request):
+    return render(request, 'partner_profile_form.html')
+
+def partner_profile(request):
+    return render(request, 'partner_profile.html')
+
+def partner_public_view(request):
+    return render(request, 'partner_public_view.html')
+
+

@@ -55,18 +55,18 @@ def payment(request):
 
 
 def add_service(request):
-    return render(request, 'add_service.html')
+    return render(request, 'add-service.html')
 
 def client_profile(request):
-    return render(request, 'client_profile.html')
+    return render(request, 'client-profile.html')
 
 def partner_profile_form(request):
-    return render(request, 'partner_profile_form.html')
+    return render(request, 'partner-profile-form.html')
 
 def partner_profile(request):
-    return render(request, 'partner_profile.html')
+    return render(request, 'partner-profile.html')
 
 def partner_public_view(request):
-    return render(request, 'partner_public_view.html')
+    return render(request, 'partner-public-view.html')
 
 

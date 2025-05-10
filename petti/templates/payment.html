@@ -1,464 +1,466 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pago - Petti</title>
-  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pago - Petti</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+  </head>
+  <body>
     <!-- Header (navbar)-->
-    <nav class="navbar">
+    {% include "navbar.html" %}
+    <!--BODY -->
+    <main class="main-content payment-page">
       <div class="container">
-        <div class="navbar-logo">
-          <a href="{% url 'index' %}" class="menu-item">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#021059" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="logo-icon">
-              <path d="M18 19v-5.5a1.5 1.5 0 0 0-3 0v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 0-3 0v10.5a1.5 1.5 0 0 1-3 0v-8a1.5 1.5 0 0 0-3 0V19"></path>
-            </svg>
-            <span class="logo-text">Petti</span>
-            <span class="user-status">¡Hola, [nombre de usuario]!</span>
-          </a>
-        </div>
-        
-        <div class="navbar-menu">
-          <a href="{% url 'index' %}" class="menu-item">Inicio</a>
-          <a href="{% url 'services' %}" class="menu-item">Servicios</a>
-          <a href="{% url 'login' %}" class="menu-item">Login</a>
-          <a href="{% url 'register' %}" class="menu-item">Registro</a>
-          <a href="{% url 'admin_view' %}" class="menu-item admin-link">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="admin-icon">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path>
-            </svg>
-            Admin
-          </a>
-        </div>
-        
-        <button class="mobile-menu-button">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="menu-icon">
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-          </svg>
-        </button>
-      </div>
-      
-      <div class="mobile-menu">
-        <a href="{% url 'index' %}" class="mobile-menu-item">Inicio</a>
-        <a href="{% url 'services' %}" class="mobile-menu-item">Servicios</a>
-        <a href="{% url 'admin_view' %}" class="menu-item admin-link">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="admin-icon">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path>
-          </svg>
-          Admin
-        </a>
-        <a href="{% url 'login' %}" class="mobile-menu-item">Login</a>
-        <a href="{% url 'register' %}" class="mobile-menu-item register-button">Registro</a>
-      </div>
-    </nav>
-  
-  
-   <!--BODY -->
-  <main class="main-content payment-page">
-  <div class="container">
-    <div class="payment-process">
-      <div class="payment-steps">
-        <div class="payment-step active" data-step="1">
-          <div class="step-icon">
-            <!-- ícono calendario -->
-          </div>
-          <span class="step-label">Agenda</span>
-        </div>
-
-        <div class="step-line"></div>
-
-        <div class="payment-step" data-step="2">
-          <div class="step-icon">
-            <!-- ícono tarjeta -->
-          </div>
-          <span class="step-label">Pago</span>
-        </div>
-
-        <div class="step-line"></div>
-
-        <div class="payment-step" data-step="3">
-          <div class="step-icon">
-            <!-- ícono check -->
-          </div>
-          <span class="step-label">Confirmación</span>
-        </div>
-      </div>
-
-      <div class="payment-card">
-        <!-- Paso 1: Agenda -->
-        <div class="payment-section active" id="scheduleSection">
-          <h2 class="payment-title">Agenda tu servicio</h2>
-
-          <div class="service-info" id="serviceInfo">
-            <div class="service-image">
-              <img src="https://images.unsplash.com/photo-1535268647677-300dbf3d78d1" alt="Servicio" id="serviceImg" class="service-img">
+        <div class="payment-process">
+          <div class="payment-steps">
+            <div class="payment-step active" data-step="1">
+              <div class="step-icon">
+                <!-- ícono calendario -->
+              </div>
+              <span class="step-label">Agenda</span>
             </div>
-            <div class="service-details">
-              <h3 class="service-name" id="serviceName">Peluquería Premium para Mascotas</h3>
-              <p class="service-price" id="serviceBasePrice">$35/hora</p>
+            <div class="step-line"></div>
+            <div class="payment-step" data-step="2">
+              <div class="step-icon">
+                <!-- ícono tarjeta -->
+              </div>
+              <span class="step-label">Pago</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="payment-step" data-step="3">
+              <div class="step-icon">
+                <!-- ícono check -->
+              </div>
+              <span class="step-label">Confirmación</span>
             </div>
           </div>
-
-          <form id="scheduleForm" class="schedule-form">
-            <div class="form-group">
-              <label for="date" class="form-label">Selecciona la fecha</label>
-              <input type="date" id="date" class="form-input" required>
-            </div>
-
-            <div class="form-group">
-              <label for="time" class="form-label">Selecciona la hora</label>
-              <input type="time" id="time" class="form-input" required>
-            </div>
-
-            <div class="form-group">
-              <label for="hours" class="form-label">Duración (horas)</label>
-              <select id="hours" class="form-input" required>
-                <option value="1">1 hora</option>
-                <option value="2">2 horas</option>
-                <option value="3">3 horas</option>
-                <option value="4">4 horas</option>
-                <option value="5">5 horas</option>
-              </select>
-            </div>
-
-            <div class="order-summary">
-              <div class="order-total">
-                <span class="total-label">Precio total:</span>
-                <span class="total-amount" id="totalPrice">$35.00</span>
+          <div class="payment-card">
+            <!-- Paso 1: Agenda -->
+            <div class="payment-section active" id="scheduleSection">
+              <h2 class="payment-title">Agenda tu servicio</h2>
+              <div class="service-info" id="serviceInfo">
+                <div class="service-image">
+                  <img src="https://images.unsplash.com/photo-1535268647677-300dbf3d78d1"
+                       alt="Servicio"
+                       id="serviceImg"
+                       class="service-img">
+                </div>
+                <div class="service-details">
+                  <h3 class="service-name" id="serviceName">Peluquería Premium para Mascotas</h3>
+                  <p class="service-price" id="serviceBasePrice">$35/hora</p>
+                </div>
               </div>
-            </div>
-
-            <div class="form-actions">
-              <button type="button" id="continueToPayment" class="button primary-button full-width">Continuar al pago</button>
-            </div>
-          </form>
-        </div>
-
-        <!-- Paso 2: Pago -->
-        <div class="payment-section" id="paymentSection">
-          <h2 class="payment-title">Detalles de pago</h2>
-
-          <div class="order-summary payment-summary">
-            <h3 class="summary-title">Resumen del pedido</h3>
-            <div class="summary-details">
-              <div class="summary-row">
-                <span class="summary-label" id="summaryService">Peluquería Premium para Mascotas</span>
-                <span class="summary-value" id="summaryRate">$35/hora</span>
-              </div>
-              <div class="summary-row">
-                <span class="summary-label">Duración</span>
-                <span class="summary-value" id="summaryDuration">1 hora</span>
-              </div>
-              <div class="summary-total">
-                <span class="total-label">Total</span>
-                <span class="total-amount" id="summaryTotal">$35.00</span>
-              </div>
-            </div>
-          </div>
-
-          <form id="paymentForm" class="payment-form">
-            <div class="form-group">
-              <label for="cardName" class="form-label">Nombre en la tarjeta</label>
-              <input type="text" id="cardName" placeholder="Juan Pérez" class="form-input" required>
-            </div>
-
-            <div class="form-group">
-              <label for="cardNumber" class="form-label">Número de tarjeta</label>
-              <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" class="form-input" required>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group half">
-                <label for="expiry" class="form-label">Fecha de vencimiento</label>
-                <input type="text" id="expiry" placeholder="MM/AA" class="form-input" required>
-              </div>
-
-              <div class="form-group half">
-                <label for="cvc" class="form-label">CVC</label>
-                <input type="text" id="cvc" placeholder="123" class="form-input" required>
-              </div>
-            </div>
-
-            <div class="form-actions">
-              <button type="button" id="backToSchedule" class="button secondary-button">Volver</button>
-              <button type="button" id="completePayment" class="button primary-button">Completar pago</button>
-            </div>
-          </form>
-        </div>
-
-        <!-- Paso 3: Confirmación -->
-        <div class="payment-section" id="confirmationSection">
-          <div class="confirmation-content">
-            <div class="confirmation-status" id="processingPayment">
-              <div class="loading-spinner"></div>
-              <h2 class="confirmation-title">Procesando tu pago...</h2>
-              <p class="confirmation-message">Por favor espera mientras confirmamos tu reserva.</p>
-            </div>
-
-            <div class="confirmation-status success-status" id="paymentSuccess" style="display: none;">
-              <div class="success-icon">
-                <!-- ícono de éxito -->
-              </div>
-              <h2 class="confirmation-title">¡Pago exitoso!</h2>
-              <p class="confirmation-message" id="confirmationMessage">Tu reserva para Peluquería Premium para Mascotas ha sido confirmada.</p>
-
-              <div class="booking-details">
-                <h3 class="booking-title">Detalles de la reserva</h3>
-                <div class="booking-info">
-                  <div class="booking-item">
-                    <!-- ícono calendario -->
-                    <span id="confirmationDate">Fecha no establecida</span>
+              <form id="scheduleForm" class="schedule-form">
+                <div class="form-group">
+                  <label for="date" class="form-label">Selecciona la fecha</label>
+                  <input type="date" id="date" class="form-input" required>
+                </div>
+                <div class="form-group">
+                  <label for="time" class="form-label">Selecciona la hora</label>
+                  <input type="time" id="time" class="form-input" required>
+                </div>
+                <div class="form-group">
+                  <label for="hours" class="form-label">Duración (horas)</label>
+                  <select id="hours" class="form-input" required>
+                    <option value="1">1 hora</option>
+                    <option value="2">2 horas</option>
+                    <option value="3">3 horas</option>
+                    <option value="4">4 horas</option>
+                    <option value="5">5 horas</option>
+                  </select>
+                </div>
+                <div class="order-summary">
+                  <div class="order-total">
+                    <span class="total-label">Precio total:</span>
+                    <span class="total-amount" id="totalPrice">$35.00</span>
                   </div>
-                  <div class="booking-item">
-                    <!-- ícono reloj -->
-                    <span id="confirmationTime">Hora no establecida (1 hora)</span>
+                </div>
+                <div class="form-actions">
+                  <button type="button"
+                          id="continueToPayment"
+                          class="button primary-button full-width">Continuar al pago</button>
+                </div>
+              </form>
+            </div>
+            <!-- Paso 2: Pago -->
+            <div class="payment-section" id="paymentSection">
+              <h2 class="payment-title">Detalles de pago</h2>
+              <div class="order-summary payment-summary">
+                <h3 class="summary-title">Resumen del pedido</h3>
+                <div class="summary-details">
+                  <div class="summary-row">
+                    <span class="summary-label" id="summaryService">Peluquería Premium para Mascotas</span>
+                    <span class="summary-value" id="summaryRate">$35/hora</span>
                   </div>
-                  <div class="booking-item total-price">
-                    <!-- ícono tarjeta -->
-                    <span id="confirmationTotal">Total: $35.00</span>
+                  <div class="summary-row">
+                    <span class="summary-label">Duración</span>
+                    <span class="summary-value" id="summaryDuration">1 hora</span>
+                  </div>
+                  <div class="summary-total">
+                    <span class="total-label">Total</span>
+                    <span class="total-amount" id="summaryTotal">$35.00</span>
                   </div>
                 </div>
               </div>
-
-              <a href="index.html" class="button primary-button">Volver al inicio</a>
+              <form id="paymentForm" class="payment-form">
+                <div class="form-group">
+                  <label for="cardName" class="form-label">Nombre en la tarjeta</label>
+                  <input type="text"
+                         id="cardName"
+                         placeholder="Juan Pérez"
+                         class="form-input"
+                         required>
+                </div>
+                <div class="form-group">
+                  <label for="cardNumber" class="form-label">Número de tarjeta</label>
+                  <input type="text"
+                         id="cardNumber"
+                         placeholder="1234 5678 9012 3456"
+                         class="form-input"
+                         required>
+                </div>
+                <div class="form-row">
+                  <div class="form-group half">
+                    <label for="expiry" class="form-label">Fecha de vencimiento</label>
+                    <input type="text"
+                           id="expiry"
+                           placeholder="MM/AA"
+                           class="form-input"
+                           required>
+                  </div>
+                  <div class="form-group half">
+                    <label for="cvc" class="form-label">CVC</label>
+                    <input type="text" id="cvc" placeholder="123" class="form-input" required>
+                  </div>
+                </div>
+                <div class="form-actions">
+                  <button type="button" id="backToSchedule" class="button secondary-button">Volver</button>
+                  <button type="button" id="completePayment" class="button primary-button">Completar pago</button>
+                </div>
+              </form>
+            </div>
+            <!-- Paso 3: Confirmación -->
+            <div class="payment-section" id="confirmationSection">
+              <div class="confirmation-content">
+                <div class="confirmation-status" id="processingPayment">
+                  <div class="loading-spinner"></div>
+                  <h2 class="confirmation-title">Procesando tu pago...</h2>
+                  <p class="confirmation-message">Por favor espera mientras confirmamos tu reserva.</p>
+                </div>
+                <div class="confirmation-status success-status"
+                     id="paymentSuccess"
+                     style="display: none">
+                  <div class="success-icon">
+                    <!-- ícono de éxito -->
+                  </div>
+                  <h2 class="confirmation-title">¡Pago exitoso!</h2>
+                  <p class="confirmation-message" id="confirmationMessage">
+                    Tu reserva para Peluquería Premium para Mascotas ha sido confirmada.
+                  </p>
+                  <div class="booking-details">
+                    <h3 class="booking-title">Detalles de la reserva</h3>
+                    <div class="booking-info">
+                      <div class="booking-item">
+                        <!-- ícono calendario -->
+                        <span id="confirmationDate">Fecha no establecida</span>
+                      </div>
+                      <div class="booking-item">
+                        <!-- ícono reloj -->
+                        <span id="confirmationTime">Hora no establecida (1 hora)</span>
+                      </div>
+                      <div class="booking-item total-price">
+                        <!-- ícono tarjeta -->
+                        <span id="confirmationTotal">Total: $35.00</span>
+                      </div>
+                    </div>
+                  </div>
+                  <a href="index.html" class="button primary-button">Volver al inicio</a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+        <div class="no-service" id="noServiceSelected" style="display: none;">
+          <p class="no-service-text">No se ha seleccionado ningún servicio.</p>
+          <a href="{% url 'services' %}" class="button primary-button">Ver servicios</a>
+        </div>
       </div>
-    </div>
+    </main>
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 width="24"
+                 height="24"
+                 viewBox="0 0 24 24"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="2"
+                 stroke-linecap="round"
+                 stroke-linejoin="round"
+                 class="logo-icon">
+              <path d="M18 19v-5.5a1.5 1.5 0 0 0-3 0v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 0-3 0v10.5a1.5 1.5 0 0 1-3 0v-8a1.5 1.5 0 0 0-3 0V19">
+              </path>
+            </svg>
+            <span class="footer-brand">Petti</span>
+          </div>
+          <p class="footer-text">
+            Servicios profesionales de cuidado de mascotas para mantener a tus mascotas felices y saludables.
+          </p>
+          <div class="footer-social">
+            <a href="#" class="social-link">
+              <svg xmlns="http://www.w3.org/2000/svg"
+                   width="24"
+                   height="24"
+                   viewBox="0 0 24 24"
+                   fill="none"
+                   stroke="currentColor"
+                   stroke-width="2"
+                   stroke-linecap="round"
+                   stroke-linejoin="round">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+              </svg>
+            </a>
+            <a href="#" class="social-link">
+              <svg xmlns="http://www.w3.org/2000/svg"
+                   width="24"
+                   height="24"
+                   viewBox="0 0 24 24"
+                   fill="none"
+                   stroke="currentColor"
+                   stroke-width="2"
+                   stroke-linecap="round"
+                   stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            <a href="#" class="social-link">
+              <svg xmlns="http://www.w3.org/2000/svg"
+                   width="24"
+                   height="24"
+                   viewBox="0 0 24 24"
+                   fill="none"
+                   stroke="currentColor"
+                   stroke-width="2"
+                   stroke-linecap="round"
+                   stroke-linejoin="round">
+                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
+                </path>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-menu">
+          <div class="footer-column">
+            <h3 class="footer-heading">Servicios</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="{% url 'services' %}">Estética para Mascotas</a>
+              </li>
+              <li>
+                <a href="{% url 'services' %}">Paseo de Perros</a>
+              </li>
+              <li>
+                <a href="{% url 'services' %}">Cuidado de Mascotas</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3 class="footer-heading">Compañía</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="#">Sobre Nosotros</a>
+              </li>
+              <li>
+                <a href="#">Carreras</a>
+              </li>
+              <li>
+                <a href="#">Nuestro Equipo</a>
+              </li>
+              <li>
+                <a href="#">Blog</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3 class="footer-heading">Soporte</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="#">Centro de Ayuda</a>
+              </li>
+              <li>
+                <a href="#">Contáctanos</a>
+              </li>
+              <li>
+                <a href="#">Preguntas Frecuentes</a>
+              </li>
+              <li>
+                <a href="#">Política de Privacidad</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2025 Petti. Todos los derechos reservados.</p>
+        </div>
+      </div>
+    </footer>
+    <script>
+        // Sample services data (in a real app, this would come from a backend API)
+        const allServices = [{
+            id: 1,
+            title: "Premium Pet Grooming",
+            description: "Professional grooming service including bath, haircut, nail trimming, and ear cleaning.",
+            price: 35,
+            image: "https://images.unsplash.com/photo-1535268647677-300dbf3d78d1",
+            category: "grooming"
+        }, {
+            id: 2,
+            title: "Daily Dog Walking",
+            description: "Regular walks for your dog to stay healthy and happy while you're busy.",
+            price: 20,
+            image: "https://images.unsplash.com/photo-1452378174528-3090a4bba7b2",
+            category: "walking"
+        }, {
+            id: 3,
+            title: "Overnight Pet Sitting",
+            description: "Loving care for your pets in your home while you're away. Includes feeding, play time, and companionship.",
+            price: 45,
+            image: "https://images.unsplash.com/photo-1582562124811-c09040d0a901",
+            category: "sitting"
+        }];
 
-    <div class="no-service" id="noServiceSelected" style="display: none;">
-      <p class="no-service-text">No se ha seleccionado ningún servicio.</p>
-      <a href="{% url 'services' %}" class="button primary-button">Ver servicios</a>
-    </div>
-  </div>
-</main>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            document.querySelector('.mobile-menu-button').addEventListener('click', function() {
+                document.querySelector('.mobile-menu').classList.toggle('active');
+                this.classList.toggle('active');
+            });
 
+            // Get service ID from URL parameters
+            const params = new URLSearchParams(window.location.search);
+            const serviceId = params.get('service');
 
-<footer class="footer">
-  <div class="container">
-    <div class="footer-content">
-      <div class="footer-logo">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="logo-icon">
-          <path d="M18 19v-5.5a1.5 1.5 0 0 0-3 0v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 0-3 0v10.5a1.5 1.5 0 0 1-3 0v-8a1.5 1.5 0 0 0-3 0V19"></path>
-        </svg>
-        <span class="footer-brand">Petti</span>
-      </div>
-      <p class="footer-text">Servicios profesionales de cuidado de mascotas para mantener a tus mascotas felices y saludables.</p>
-      <div class="footer-social">
-        <a href="#" class="social-link">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-          </svg>
-        </a>
-        <a href="#" class="social-link">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-          </svg>
-        </a>
-        <a href="#" class="social-link">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
-          </svg>
-        </a>
-      </div>
-    </div>
-    <div class="footer-menu">
-      <div class="footer-column">
-        <h3 class="footer-heading">Servicios</h3>
-        <ul class="footer-links">
-          <li><a href="{% url 'services' %}">Estética para Mascotas</a></li>
-          <li><a href="{% url 'services' %}">Paseo de Perros</a></li>
-          <li><a href="{% url 'services' %}">Cuidado de Mascotas</a></li>
-        </ul>
-      </div>
-      <div class="footer-column">
-        <h3 class="footer-heading">Compañía</h3>
-        <ul class="footer-links">
-          <li><a href="#">Sobre Nosotros</a></li>
-          <li><a href="#">Carreras</a></li>
-          <li><a href="#">Nuestro Equipo</a></li>
-          <li><a href="#">Blog</a></li>
-        </ul>
-      </div>
-      <div class="footer-column">
-        <h3 class="footer-heading">Soporte</h3>
-        <ul class="footer-links">
-          <li><a href="#">Centro de Ayuda</a></li>
-          <li><a href="#">Contáctanos</a></li>
-          <li><a href="#">Preguntas Frecuentes</a></li>
-          <li><a href="#">Política de Privacidad</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2025 Petti. Todos los derechos reservados.</p>
-    </div>
-  </div>
-</footer>
+            let selectedService = null;
+            let hours = 1;
+            let totalPrice = 0;
 
-  <script>
-    // Sample services data (in a real app, this would come from a backend API)
-    const allServices = [
-      {
-        id: 1,
-        title: "Premium Pet Grooming",
-        description: "Professional grooming service including bath, haircut, nail trimming, and ear cleaning.",
-        price: 35,
-        image: "https://images.unsplash.com/photo-1535268647677-300dbf3d78d1",
-        category: "grooming"
-      },
-      {
-        id: 2,
-        title: "Daily Dog Walking",
-        description: "Regular walks for your dog to stay healthy and happy while you're busy.",
-        price: 20,
-        image: "https://images.unsplash.com/photo-1452378174528-3090a4bba7b2",
-        category: "walking"
-      },
-      {
-        id: 3,
-        title: "Overnight Pet Sitting",
-        description: "Loving care for your pets in your home while you're away. Includes feeding, play time, and companionship.",
-        price: 45,
-        image: "https://images.unsplash.com/photo-1582562124811-c09040d0a901",
-        category: "sitting"
-      }
-    ];
-    
-    document.addEventListener('DOMContentLoaded', function() {
-      // Mobile menu toggle
-      document.querySelector('.mobile-menu-button').addEventListener('click', function() {
-        document.querySelector('.mobile-menu').classList.toggle('active');
-        this.classList.toggle('active');
-      });
-      
-      // Get service ID from URL parameters
-      const params = new URLSearchParams(window.location.search);
-      const serviceId = params.get('service');
-      
-      let selectedService = null;
-      let hours = 1;
-      let totalPrice = 0;
-      
-      if (serviceId) {
-        selectedService = allServices.find(s => s.id === parseInt(serviceId));
-        
-        if (selectedService) {
-          // Set initial values
-          document.getElementById('serviceImg').src = selectedService.image;
-          document.getElementById('serviceName').textContent = selectedService.title;
-          document.getElementById('serviceBasePrice').textContent = `$${selectedService.price}/hour`;
-          totalPrice = selectedService.price;
-          document.getElementById('totalPrice').textContent = `$${totalPrice.toFixed(2)}`;
-          
-          // Set summary values
-          document.getElementById('summaryService').textContent = selectedService.title;
-          document.getElementById('summaryRate').textContent = `$${selectedService.price}/hour`;
-          document.getElementById('summaryDuration').textContent = `${hours} hour`;
-          document.getElementById('summaryTotal').textContent = `$${totalPrice.toFixed(2)}`;
-          
-          // Set confirmation message
-          document.getElementById('confirmationMessage').textContent = `Your booking for ${selectedService.title} has been confirmed.`;
-          document.getElementById('confirmationTotal').textContent = `Total: $${totalPrice.toFixed(2)}`;
-        } else {
-          document.querySelector('.payment-process').style.display = 'none';
-          document.getElementById('noServiceSelected').style.display = 'block';
-        }
-      } else {
-        document.querySelector('.payment-process').style.display = 'none';
-        document.getElementById('noServiceSelected').style.display = 'block';
-      }
-      
-      // Hours selection changes price
-      document.getElementById('hours').addEventListener('change', function() {
-        hours = parseInt(this.value);
-        
-        if (selectedService) {
-          totalPrice = selectedService.price * hours;
-          document.getElementById('totalPrice').textContent = `$${totalPrice.toFixed(2)}`;
-          
-          // Update summary
-          document.getElementById('summaryDuration').textContent = `${hours} hour${hours > 1 ? 's' : ''}`;
-          document.getElementById('summaryTotal').textContent = `$${totalPrice.toFixed(2)}`;
-          
-          // Update confirmation
-          document.getElementById('confirmationTotal').textContent = `Total: $${totalPrice.toFixed(2)}`;
-        }
-      });
-      
-      // Process steps
-      document.getElementById('continueToPayment').addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        const dateField = document.getElementById('date');
-        const timeField = document.getElementById('time');
-        
-        if (!dateField.value || !timeField.value) {
-          alert('Please select both date and time');
-          return;
-        }
-        
-        // Update steps
-        document.querySelector('.payment-step[data-step="1"]').classList.remove('active');
-        document.querySelector('.payment-step[data-step="2"]').classList.add('active');
-        
-        // Show payment section
-        document.getElementById('scheduleSection').classList.remove('active');
-        document.getElementById('paymentSection').classList.add('active');
-        
-        // Update confirmation details
-        document.getElementById('confirmationDate').textContent = dateField.value;
-        document.getElementById('confirmationTime').textContent = `${timeField.value} (${hours} hour${hours > 1 ? 's' : ''})`;
-      });
-      
-      document.getElementById('backToSchedule').addEventListener('click', function() {
-        // Update steps
-        document.querySelector('.payment-step[data-step="2"]').classList.remove('active');
-        document.querySelector('.payment-step[data-step="1"]').classList.add('active');
-        
-        // Show schedule section
-        document.getElementById('paymentSection').classList.remove('active');
-        document.getElementById('scheduleSection').classList.add('active');
-      });
-      
-      document.getElementById('completePayment').addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        const cardName = document.getElementById('cardName');
-        const cardNumber = document.getElementById('cardNumber');
-        const expiry = document.getElementById('expiry');
-        const cvc = document.getElementById('cvc');
-        
-        if (!cardName.value || !cardNumber.value || !expiry.value || !cvc.value) {
-          alert('Please fill in all payment details');
-          return;
-        }
-        
-        // Update steps
-        document.querySelector('.payment-step[data-step="2"]').classList.remove('active');
-        document.querySelector('.payment-step[data-step="3"]').classList.add('active');
-        
-        // Show confirmation section
-        document.getElementById('paymentSection').classList.remove('active');
-        document.getElementById('confirmationSection').classList.add('active');
-        
-        // Simulate payment processing
-        setTimeout(function() {
-          document.getElementById('processingPayment').style.display = 'none';
-          document.getElementById('paymentSuccess').style.display = 'block';
-        }, 2000);
-      });
-    });
-  </script>
-</body>
+            if (serviceId) {
+                selectedService = allServices.find(s => s.id === parseInt(serviceId));
+
+                if (selectedService) {
+                    // Set initial values
+                    document.getElementById('serviceImg').src = selectedService.image;
+                    document.getElementById('serviceName').textContent = selectedService.title;
+                    document.getElementById('serviceBasePrice').textContent = `$${selectedService.price}/hour`;
+                    totalPrice = selectedService.price;
+                    document.getElementById('totalPrice').textContent = `$${totalPrice.toFixed(2)}`;
+
+                    // Set summary values
+                    document.getElementById('summaryService').textContent = selectedService.title;
+                    document.getElementById('summaryRate').textContent = `$${selectedService.price}/hour`;
+                    document.getElementById('summaryDuration').textContent = `${hours} hour`;
+                    document.getElementById('summaryTotal').textContent = `$${totalPrice.toFixed(2)}`;
+
+                    // Set confirmation message
+                    document.getElementById('confirmationMessage').textContent = `Your booking for ${selectedService.title} has been confirmed.`;
+                    document.getElementById('confirmationTotal').textContent = `Total: $${totalPrice.toFixed(2)}`;
+                } else {
+                    document.querySelector('.payment-process').style.display = 'none';
+                    document.getElementById('noServiceSelected').style.display = 'block';
+                }
+            } else {
+                document.querySelector('.payment-process').style.display = 'none';
+                document.getElementById('noServiceSelected').style.display = 'block';
+            }
+
+            // Hours selection changes price
+            document.getElementById('hours').addEventListener('change', function() {
+                hours = parseInt(this.value);
+
+                if (selectedService) {
+                    totalPrice = selectedService.price * hours;
+                    document.getElementById('totalPrice').textContent = `$${totalPrice.toFixed(2)}`;
+
+                    // Update summary
+                    document.getElementById('summaryDuration').textContent = `${hours} hour${hours > 1 ? 's' : ''}`;
+                    document.getElementById('summaryTotal').textContent = `$${totalPrice.toFixed(2)}`;
+
+                    // Update confirmation
+                    document.getElementById('confirmationTotal').textContent = `Total: $${totalPrice.toFixed(2)}`;
+                }
+            });
+
+            // Process steps
+            document.getElementById('continueToPayment').addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const dateField = document.getElementById('date');
+                const timeField = document.getElementById('time');
+
+                if (!dateField.value || !timeField.value) {
+                    alert('Please select both date and time');
+                    return;
+                }
+
+                // Update steps
+                document.querySelector('.payment-step[data-step="1"]').classList.remove('active');
+                document.querySelector('.payment-step[data-step="2"]').classList.add('active');
+
+                // Show payment section
+                document.getElementById('scheduleSection').classList.remove('active');
+                document.getElementById('paymentSection').classList.add('active');
+
+                // Update confirmation details
+                document.getElementById('confirmationDate').textContent = dateField.value;
+                document.getElementById('confirmationTime').textContent = `${timeField.value} (${hours} hour${hours > 1 ? 's' : ''})`;
+            });
+
+            document.getElementById('backToSchedule').addEventListener('click', function() {
+                // Update steps
+                document.querySelector('.payment-step[data-step="2"]').classList.remove('active');
+                document.querySelector('.payment-step[data-step="1"]').classList.add('active');
+
+                // Show schedule section
+                document.getElementById('paymentSection').classList.remove('active');
+                document.getElementById('scheduleSection').classList.add('active');
+            });
+
+            document.getElementById('completePayment').addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const cardName = document.getElementById('cardName');
+                const cardNumber = document.getElementById('cardNumber');
+                const expiry = document.getElementById('expiry');
+                const cvc = document.getElementById('cvc');
+
+                if (!cardName.value || !cardNumber.value || !expiry.value || !cvc.value) {
+                    alert('Please fill in all payment details');
+                    return;
+                }
+
+                // Update steps
+                document.querySelector('.payment-step[data-step="2"]').classList.remove('active');
+                document.querySelector('.payment-step[data-step="3"]').classList.add('active');
+
+                // Show confirmation section
+                document.getElementById('paymentSection').classList.remove('active');
+                document.getElementById('confirmationSection').classList.add('active');
+
+                // Simulate payment processing
+                setTimeout(function() {
+                    document.getElementById('processingPayment').style.display = 'none';
+                    document.getElementById('paymentSuccess').style.display = 'block';
+                }, 2000);
+            });
+        });
+    </script>
+  </body>
 </html>

@@ -1,0 +1,9 @@
+{
+  "profile": "django",
+  "indent": 2,
+  "max_line_length": 120,
+  "format_css": true,
+  "format_js": true,
+  "linter": false,
+  "ignore": "H006,H008,H013,H014,H015,H017,H020,H021,H022,H023,H024,H025,H026,H027,H028,H029,H030,H031,H032,H033,H034,H035,D018"
+}

@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.contrib.auth import views as auth_views 
-from . import views 
+from app import views 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,7 +26,14 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     path('services/', views.services, name='services'),
     path('admin-dashboard/', views.admin_dashboard, name='admin_dashboard'),
-    path('admin-view/', views.admin_view, name='admin_view'),
     path('payment/', views.payment, name='payment'),
+    path('logout/', views.logout_view, name='logout'),
+
+    path('add-service/', views.add_service, name='add_service'),
+    path('client-profile/', views.client_profile, name='client_profile'),
+    path('partner-profile-form/', views.partner_profile_form, name='partner_profile_form'),
+    path('partner-profile/', views.partner_profile, name='partner_profile'),
+    path('partner-public-view/', views.partner_public_view, name='partner_public_view'),
+    
 ]
 

@@ -1,0 +1,354 @@
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil Partner - Petti</title>
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+   <!-- Header (navbar)-->
+   {% include "navbar.html" %}
+
+   <main class="main-content">
+    <div class="container">
+      <div class="partner-public-profile my-8">
+        <a href="services.html" class="flex items-center text-primary hover:underline mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1">
+            <path d="m15 18-6-6 6-6"></path>
+          </svg>
+          Volver a Servicios
+        </a>
+        
+        <div class="enhanced-card mb-6">
+          <div class="enhanced-card-body">
+            <div class="flex flex-col md:flex-row">
+              <div class="md:w-1/3 flex justify-center">
+                <div class="text-center mb-6 md:mb-0">
+                  <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158" alt="Sarah Johnson" class="profile-photo-lg mx-auto mb-4">
+                  <h1 class="text-2xl font-bold">Sarah Johnson</h1>
+                  <div class="flex justify-center mt-4 space-x-3">
+                    <a href="https://instagram.com/sarahspetcare" target="_blank" class="social-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                      </svg>
+                    </a>
+                    <a href="https://facebook.com/sarahspetcare" target="_blank" class="social-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                      </svg>
+                    </a>
+                    <a href="https://linkedin.com/in/sarahjohnsonpetcare" target="_blank" class="social-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                        <rect width="4" height="12" x="2" y="9"></rect>
+                        <circle cx="4" cy="4" r="2"></circle>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="md:w-2/3 md:pl-8">
+                <div class="mb-8">
+                  <h2 class="text-xl font-semibold mb-3">Acerca de</h2>
+                  <p class="whitespace-pre-wrap">
+                    Soy una peluquera de mascotas certificada con más de 7 años de experiencia trabajando con perros y gatos de todas las razas. Me especializo en crear un ambiente libre de estrés para las mascotas y me enorgullezco de mi enfoque suave.
+                    
+                    Ofrezco servicios que incluyen baños, cortes de pelo, recorte de uñas y más. La comodidad y seguridad de tu mascota son mis principales prioridades, y siempre adapto mi enfoque a las necesidades únicas y temperamento de cada animal.
+                    
+                    ¡Espero conocerte a ti y a tu peludo miembro de la familia!
+                  </p>
+                </div>
+                
+                <div class="partner-stats grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                  <div class="stat-card bg-muted rounded-xl p-4 text-center">
+                    <div class="text-3xl font-bold">7+</div>
+                    <div class="text-sm text-muted-foreground">Años de Experiencia</div>
+                  </div>
+                  <div class="stat-card bg-muted rounded-xl p-4 text-center">
+                    <div class="text-3xl font-bold">4.9</div>
+                    <div class="text-sm text-muted-foreground">Calificación Promedio</div>
+                  </div>
+                  <div class="stat-card bg-muted rounded-xl p-4 text-center">
+                    <div class="text-3xl font-bold">127</div>
+                    <div class="text-sm text-muted-foreground">Trabajos Completados</div>
+                  </div>
+                  <div class="stat-card bg-muted rounded-xl p-4 text-center">
+                    <div class="text-3xl font-bold">98%</div>
+                    <div class="text-sm text-muted-foreground">Tasa de Respuesta</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="enhanced-card mb-6">
+          <div class="enhanced-card-header">
+            <h2 class="text-xl font-semibold">Galería de Fotos</h2>
+          </div>
+          <div class="enhanced-card-body">
+            <div class="photo-gallery">
+              <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1535930891776-0c2dfb7fda1a" alt="Foto 1">
+              </div>
+              <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1596492784531-6e6eb5ea9993" alt="Foto 2">
+              </div>
+              <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1583512603806-077998240c7a" alt="Foto 3">
+              </div>
+              <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1601758177266-bc599de87707" alt="Foto 4">
+              </div>
+              <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1541781774459-bb2af2f05b55" alt="Foto 5">
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="enhanced-card">
+          <div class="enhanced-card-header">
+            <h2 class="text-xl font-semibold">Servicios Disponibles</h2>
+          </div>
+          <div class="enhanced-card-body">
+            <div class="space-y-6">
+              <!-- Service Item -->
+              <div class="petti-card p-4">
+                <div class="flex flex-wrap md:flex-nowrap justify-between">
+                  <div class="w-full md:w-3/4">
+                    <h3 class="text-lg font-semibold">Peluquería Premium para Mascotas</h3>
+                    <p class="text-sm text-accent-foreground font-semibold mb-2">$35/hora</p>
+                    <p class="mb-4">Servicio completo de peluquería para perros y gatos, incluyendo baño, corte de pelo, recorte de uñas, limpieza de oídos y más.</p>
+                    <div class="flex flex-wrap gap-2">
+                      <span class="bg-muted px-2 py-1 rounded-md text-xs">Peluquería</span>
+                      <span class="bg-muted px-2 py-1 rounded-md text-xs">Gatos</span>
+                      <span class="bg-muted px-2 py-1 rounded-md text-xs">Perros</span>
+                    </div>
+                  </div>
+                  <div class="mt-4 md:mt-0 flex items-start">
+                    <button class="petti-button">Reservar Ahora</button>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Service Item -->
+              <div class="petti-card p-4">
+                <div class="flex flex-wrap md:flex-nowrap justify-between">
+                  <div class="w-full md:w-3/4">
+                    <h3 class="text-lg font-semibold">Paseo de Perros</h3>
+                    <p class="text-sm text-accent-foreground font-semibold mb-2">$25/hora</p>
+                    <p class="mb-4">Servicio profesional de paseo de perros. Incluye paseos de 30-60 minutos, agua fresca y golosinas si son aprobadas por el dueño.</p>
+                    <div class="flex flex-wrap gap-2">
+                      <span class="bg-muted px-2 py-1 rounded-md text-xs">Paseo</span>
+                      <span class="bg-muted px-2 py-1 rounded-md text-xs">Ejercicio</span>
+                      <span class="bg-muted px-2 py-1 rounded-md text-xs">Perros</span>
+                    </div>
+                  </div>
+                  <div class="mt-4 md:mt-0 flex items-start">
+                    <button class="petti-button">Reservar Ahora</button>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Service Item -->
+              <div class="petti-card p-4">
+                <div class="flex flex-wrap md:flex-nowrap justify-between">
+                  <div class="w-full md:w-3/4">
+                    <h3 class="text-lg font-semibold">Cuidado de Mascotas</h3>
+                    <p class="text-sm text-accent-foreground font-semibold mb-2">$30/hora</p>
+                    <p class="mb-4">Cuidado de mascotas a domicilio para todo tipo de mascotas. Incluye alimentación, tiempo de juego, administración de medicamentos si es necesario, y mucho amor y atención.</p>
+                    <div class="flex flex-wrap gap-2">
+                      <span class="bg-muted px-2 py-1 rounded-md text-xs">Cuidado</span>
+                      <span class="bg-muted px-2 py-1 rounded-md text-xs">A Domicilio</span>
+                      <span class="bg-muted px-2 py-1 rounded-md text-xs">Todas las Mascotas</span>
+                    </div>
+                  </div>
+                  <div class="mt-4 md:mt-0 flex items-start">
+                    <button class="petti-button">Reservar Ahora</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <svg xmlns="http://www.w3.org/2000/svg"
+               width="24"
+               height="24"
+               viewBox="0 0 24 24"
+               fill="none"
+               stroke="currentColor"
+               stroke-width="2"
+               stroke-linecap="round"
+               stroke-linejoin="round"
+               class="logo-icon">
+            <path d="M18 19v-5.5a1.5 1.5 0 0 0-3 0v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 0-3 0v10.5a1.5 1.5 0 0 1-3 0v-8a1.5 1.5 0 0 0-3 0V19">
+            </path>
+          </svg>
+          <span class="footer-brand">Petti</span>
+        </div>
+        <p class="footer-text">
+          Servicios profesionales de cuidado de mascotas para mantener a tus mascotas felices y saludables.
+        </p>
+        <div class="footer-social">
+          <a href="#" class="social-link">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 width="24"
+                 height="24"
+                 viewBox="0 0 24 24"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="2"
+                 stroke-linecap="round"
+                 stroke-linejoin="round">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
+          </a>
+          <a href="#" class="social-link">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 width="24"
+                 height="24"
+                 viewBox="0 0 24 24"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="2"
+                 stroke-linecap="round"
+                 stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+          <a href="#" class="social-link">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 width="24"
+                 height="24"
+                 viewBox="0 0 24 24"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="2"
+                 stroke-linecap="round"
+                 stroke-linejoin="round">
+              <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
+              </path>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-menu">
+        <div class="footer-column">
+          <h3 class="footer-heading">Servicios</h3>
+          <ul class="footer-links">
+            <li>
+              <a href="{% url 'services' %}">Estética para Mascotas</a>
+            </li>
+            <li>
+              <a href="{% url 'services' %}">Paseo de Perros</a>
+            </li>
+            <li>
+              <a href="{% url 'services' %}">Cuidado de Mascotas</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3 class="footer-heading">Compañía</h3>
+          <ul class="footer-links">
+            <li>
+              <a href="#">Sobre Nosotros</a>
+            </li>
+            <li>
+              <a href="#">Carreras</a>
+            </li>
+            <li>
+              <a href="#">Nuestro Equipo</a>
+            </li>
+            <li>
+              <a href="#">Blog</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3 class="footer-heading">Soporte</h3>
+          <ul class="footer-links">
+            <li>
+              <a href="#">Centro de Ayuda</a>
+            </li>
+            <li>
+              <a href="#">Contáctanos</a>
+            </li>
+            <li>
+              <a href="#">Preguntas Frecuentes</a>
+            </li>
+            <li>
+              <a href="#">Política de Privacidad</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Petti. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    document.querySelector('.mobile-menu-button').addEventListener('click', function() {
+      document.querySelector('.mobile-menu').classList.toggle('active');
+    });
+    
+    // Lightbox for gallery images (simple implementation)
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    
+    galleryItems.forEach(item => {
+      item.addEventListener('click', function() {
+        const imgSrc = this.querySelector('img').src;
+        
+        // Create lightbox elements
+        const lightbox = document.createElement('div');
+        lightbox.className = 'lightbox fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50';
+        
+        const img = document.createElement('img');
+        img.src = imgSrc;
+        img.className = 'max-h-[80vh] max-w-[90vw] object-contain';
+        
+        const closeBtn = document.createElement('button');
+        closeBtn.innerHTML = '&times;';
+        closeBtn.className = 'absolute top-6 right-6 text-white text-4xl';
+        closeBtn.onclick = function() {
+          document.body.removeChild(lightbox);
+          document.body.classList.remove('overflow-hidden');
+        };
+        
+        lightbox.appendChild(img);
+        lightbox.appendChild(closeBtn);
+        
+        // Append to body
+        document.body.appendChild(lightbox);
+        document.body.classList.add('overflow-hidden');
+        
+        // Close on click outside image
+        lightbox.addEventListener('click', function(e) {
+          if (e.target === lightbox) {
+            document.body.removeChild(lightbox);
+            document.body.classList.remove('overflow-hidden');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,1 +1,2 @@
 django==5.2
+djlint==1.36.4

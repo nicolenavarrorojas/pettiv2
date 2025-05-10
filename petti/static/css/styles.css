@@ -20,6 +20,19 @@
   --spacing-lg: 1.5rem;
   --spacing-xl: 2rem;
   --transition: all 0.3s ease;
+  /* Define Petti specific CSS variables */
+  --petti-primary: #021059;
+  --petti-secondary: #073491;
+  --petti-light: #E5F9D8;
+  --petti-dark: #021059;
+  --petti-accent: #73E91E;
+  --petti-muted: #F2FCE2;
+  --petti-gray: #8E9196;
+  --petti-lightgray: #F1F1F1;
+  --petti-success: #48BB78;
+  --petti-error: #E53E3E;
+  --petti-warning: #F6AD55;
+  --petti-info: #4299E1;
 }
 
 * {
@@ -1874,5 +1887,42 @@ img {
 
 .price-input {
   padding-left: 2rem;
+}
+
+
+
+
+
+
+
+
+/* User icon */
+.user-icon-button {
+  background-color: var(--petti-muted);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--petti-primary);
+  transition: all 0.2s ease-in-out;
+}
+
+.user-icon-button:hover {
+  background-color: var(--petti-light);
+  color: var(--petti-secondary);
+}
+
+.user-icon-button:focus {
+  outline: none;
+  ring: 2px solid var(--petti-accent);
+}
+
+.user-icon {
+  height: 20px;
+  width: 20px;
 }
 

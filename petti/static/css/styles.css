@@ -425,8 +425,8 @@ img {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 3rem;
-  height: 3rem;
+  width: 10rem;
+  height: 100rem;
   background-color: var(--primary-color);
   color: var(--white);
   border-radius: 50%;
@@ -1926,3 +1926,12 @@ img {
   width: 20px;
 }
 
+
+
+.service-image-custom {
+  display: block;
+  margin: 0 auto;
+  width: 300px;
+  height: auto;
+  border-radius: 12px;
+}

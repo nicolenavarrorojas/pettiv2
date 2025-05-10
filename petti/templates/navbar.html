@@ -1,23 +1,79 @@
-<nav class="navbar">
+<head>
   {% load static %}
-  <div class="container">
-    <div class="navbar-logo">
-      <a href="{% url 'index' %}" class="menu-item">
-        <img src="{% static 'css/imagenes/logo1.jpg' %}" alt="Logo">
-       
-        <span class="logo-text">Petti</span>
-        {% if user.is_authenticated %}
-          <span class="user-status">¡Hola, {{ user.email }}!</span>
-        {% else %}
-          <span class="user-status">Hola, usuario anónimo</span>
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-logo">
+        <a href="{% url 'index' %}" class="menu-item">
+          <img src="{% static 'css/imagenes/logo2.png' %}" alt="Logo" style="width: 100px; height: auto;">
+          {% if user.is_authenticated %}
+            <span class="user-status">¡Hola, {{ user.email }}!</span>
+          {% else %}
+            <span class="user-status">Hola, usuario anónimo</span>
+          {% endif %}
+        </a>
+      </div>
+      <div class="navbar-menu">
+        <a href="{% url 'index' %}" class="menu-item">Inicio</a>
+        <a href="{% url 'services' %}" class="menu-item">Servicios</a>
+
+
+        <button class="user-icon-button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="user-icon">
+            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </button>
+
+        {% if user.is_administrator %}
+          <a href="{% url 'admin_dashboard' %}" class="menu-item admin-link">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 width="16"
+                 height="16"
+                 viewBox="0 0 24 24"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="2"
+                 stroke-linecap="round"
+                 stroke-linejoin="round"
+                 class="admin-icon">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path>
+            </svg>
+            Admin
+          </a>
         {% endif %}
-      </a>
+        {% if not user.is_authenticated %}
+          <a href="{% url 'login' %}" class="menu-item">Login</a>
+          <a href="{% url 'register' %}" class="menu-item">Registro</a>
+        {% else %}
+          <a href="{% url 'logout' %}" class="menu-item">Logout</a>
+        {% endif %}
+      </div>
+      <button class="mobile-menu-button">
+        <svg xmlns="http://www.w3.org/2000/svg"
+             width="24"
+             height="24"
+             viewBox="0 0 24 24"
+             fill="none"
+             stroke="currentColor"
+             stroke-width="2"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             class="menu-icon">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
     </div>
-    <div class="navbar-menu">
-      <a href="{% url 'index' %}" class="menu-item">Inicio</a>
-      <a href="{% url 'services' %}" class="menu-item">Servicios</a>
+    <div class="mobile-menu">
+      <a href="{% url 'index' %}" class="mobile-menu-item">Inicio</a>
+      <a href="{% url 'services' %}" class="mobile-menu-item">Servicios</a>
       {% if user.is_administrator %}
-        <a href="{% url 'admin_dashboard' %}" class="menu-item admin-link">
+        <a href="{% url 'admin_dashboard' %}"
+           class="mobile-menu-item admin-link">
           <svg xmlns="http://www.w3.org/2000/svg"
                width="16"
                height="16"
@@ -34,55 +90,11 @@
         </a>
       {% endif %}
       {% if not user.is_authenticated %}
-        <a href="{% url 'login' %}" class="menu-item">Login</a>
-        <a href="{% url 'register' %}" class="menu-item">Registro</a>
+        <a href="{% url 'login' %}" class="mobile-menu-item">Login</a>
+        <a href="{% url 'register' %}" class="mobile-menu-item">Registro</a>
       {% else %}
-        <a href="{% url 'logout' %}" class="menu-item">Logout</a>
+        <a href="{% url 'logout' %}" class="mobile-menu-item">Logout</a>
       {% endif %}
     </div>
-    <button class="mobile-menu-button">
-      <svg xmlns="http://www.w3.org/2000/svg"
-           width="24"
-           height="24"
-           viewBox="0 0 24 24"
-           fill="none"
-           stroke="currentColor"
-           stroke-width="2"
-           stroke-linecap="round"
-           stroke-linejoin="round"
-           class="menu-icon">
-        <line x1="3" y1="12" x2="21" y2="12"></line>
-        <line x1="3" y1="6" x2="21" y2="6"></line>
-        <line x1="3" y1="18" x2="21" y2="18"></line>
-      </svg>
-    </button>
-  </div>
-  <div class="mobile-menu">
-    <a href="{% url 'index' %}" class="mobile-menu-item">Inicio</a>
-    <a href="{% url 'services' %}" class="mobile-menu-item">Servicios</a>
-    {% if user.is_administrator %}
-      <a href="{% url 'admin_dashboard' %}"
-         class="mobile-menu-item admin-link">
-        <svg xmlns="http://www.w3.org/2000/svg"
-             width="16"
-             height="16"
-             viewBox="0 0 24 24"
-             fill="none"
-             stroke="currentColor"
-             stroke-width="2"
-             stroke-linecap="round"
-             stroke-linejoin="round"
-             class="admin-icon">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path>
-        </svg>
-        Admin
-      </a>
-    {% endif %}
-    {% if not user.is_authenticated %}
-      <a href="{% url 'login' %}" class="mobile-menu-item">Login</a>
-      <a href="{% url 'register' %}" class="mobile-menu-item">Registro</a>
-    {% else %}
-      <a href="{% url 'logout' %}" class="mobile-menu-item">Logout</a>
-    {% endif %}
-  </div>
-</nav>
+  </nav>
+</body>

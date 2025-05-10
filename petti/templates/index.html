@@ -17,7 +17,7 @@
       <div class="container">
         <div class="hero-content">
           <h1 class="hero-title">Servicios profesionales de cuidado de mascotas a domicilio</h1>
-          <p class="hero-subtitle">Cuidado confiable, seguro y amoroso para tus familiares peludos</p>
+          <p class="hero-subtitle">Cuidado confiable, seguro, amoroso y a medida para tus pequeños peludos</p>
           <div class="hero-buttons">
             <a href="{% url 'services' %}" class="button primary-button">Ver Servicios</a>
             <a href="{% url 'register' %}" class="button secondary-button">Regístrate Ahora</a>
@@ -39,43 +39,45 @@
         <div class="services-grid">
           <div class="service-card">
             <img src="{% static 'css/imagenes/bañomascota.jpg' %}"
-                 alt="Corte de pelo para mascotas"
-                 class="service-image">
+            alt="Corte de pelo para mascotas"
+            style="display: block; margin: 0 auto; width: 300px; height: auto; border-radius: 12px;">
+
             <div class="service-content">
               <h3 class="service-title">Aseo Premium para Mascotas</h3>
               <p class="service-description">
                 Servicio de aseo profesional que incluye baño, corte de pelo, corte de uñas y limpieza de oídos.
               </p>
               <div class="service-footer">
-                <span class="service-price">$35</span>
+                <span class="service-price">$10.000</span>
                 <a href="{% url 'services' %}" class="button small-button">Reservar Ahora</a>
               </div>
             </div>
           </div>
           <div class="service-card">
             <img src="{% static 'css/imagenes/paseomascotas.jpg' %}"
-                 alt="Paseo de perros"
-                 class="service-image">
+            alt="Paseo de perros"
+            style="display: block; margin: 0 auto; width: 300px; height: auto; border-radius: 12px;">
+       
             <div class="service-content">
               <h3 class="service-title">Paseos diarios para perros</h3>
               <p class="service-description">Paseos regulares para mantener a tu perro feliz y saludable mientras estás ocupado.</p>
               <div class="service-footer">
-                <span class="service-price">$20</span>
+                <span class="service-price">$5.000</span>
                 <a href="{% url 'services' %}" class="button small-button">Reservar Ahora</a>
               </div>
             </div>
           </div>
           <div class="service-card">
             <img src="{% static 'css/imagenes/cuidadomascotas.jpg' %}"
-                 alt="Cuidado de mascotas en casa"
-                 class="service-image">
+            alt="Cuidado de mascotas en casa"
+            style="display: block; margin: 0 auto; width: 300px; height: auto; border-radius: 12px;">       
             <div class="service-content">
-              <h3 class="service-title">Cuidado Nocturno en Casa</h3>
+              <h3 class="service-title">Cuidado en Casa</h3>
               <p class="service-description">
-                Cuidado amoroso para tus mascotas en tu hogar mientras estás fuera. Incluye alimentación, tiempo de juego y compañía.
+                Cuidamos a tus mascotas en tu hogar mientras estás fuera. Incluye alimentación, tiempo de juego y compañía.
               </p>
               <div class="service-footer">
-                <span class="service-price">$45</span>
+                <span class="service-price">$20.000</span>
                 <a href="{% url 'services' %}" class="button small-button">Reservar Ahora</a>
               </div>
             </div>
@@ -91,17 +93,38 @@
         </div>
         <div class="steps-grid">
           <div class="step-card">
-            <div class="step-icon"></div>
+
+            <div style="display: flex; justify-content: center; background-color: #021059; padding: 15px; border-radius: 60%; width: fit-content; margin: 0 auto;">
+              <img src="{% static 'css/imagenes/eligeServicio.jpg' %}"
+                   alt="Cuidado de mascotas en casa"
+                   style="width: 160px; height: 160px; border-radius: 50%; object-fit: cover;">
+            </div>
+            
+            
+            
+       
+
             <h3 class="step-title">Elige un Servicio</h3>
             <p class="step-description">Revisa nuestra variedad de servicios y selecciona lo que tu mascota necesita.</p>
           </div>
           <div class="step-card">
-            <div class="step-icon"></div>
+            
+            <div style="display: flex; justify-content: center; background-color: #021059; padding: 15px; border-radius: 60%; width: fit-content; margin: 0 auto;">
+              <img src="{% static 'css/imagenes/reservaCita.jpg' %}"
+                   alt="Cuidado de mascotas en casa"
+                   style="width: 160px; height: 160px; border-radius: 50%; object-fit: cover;">
+            </div>
+
             <h3 class="step-title">Reserva una Cita</h3>
             <p class="step-description">Selecciona una fecha y hora que sea conveniente para ti y tu mascota.</p>
           </div>
           <div class="step-card">
-            <div class="step-icon"></div>
+
+            <div style="display: flex; justify-content: center; background-color: #021059; padding: 15px; border-radius: 60%; width: fit-content; margin: 0 auto;">
+              <img src="{% static 'css/imagenes/cuidadoProfesional.jpg' %}"
+                   alt="Cuidado de mascotas en casa"
+                   style="width: 160px; height: 160px; border-radius: 50%; object-fit: cover;">
+            </div>
             <h3 class="step-title">Recibe Cuidado Profesional</h3>
             <p class="step-description">Nuestros profesionales con experiencia brindarán un excelente cuidado a tu mascota.</p>
           </div>

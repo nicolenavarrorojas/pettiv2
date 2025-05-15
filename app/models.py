@@ -44,7 +44,8 @@ class Service(models.Model):
         on_delete=models.CASCADE,
         related_name='services'
     )
+    image = models.ImageField(upload_to='service_images', null=True, blank=True)
 
     def __str__(self):
-        return self.service_type
+        return self.title
     

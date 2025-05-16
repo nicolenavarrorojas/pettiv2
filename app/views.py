@@ -3,16 +3,20 @@ from django.shortcuts import render
 from django.contrib.auth import login, authenticate, logout
 from django.urls import reverse
 from app import forms
+from app.fixtures import generate_services
 from app.utils import check_administrator
 
 def index(request):
+    generate_services()
     return render(request, 'index.html')
 
 def login_view(request):
+    generate_services()
     return render(request, 'login.html')
 
 def register(request):
     if request.method == 'GET':
+        generate_services()
         return render(request, 'register.html')
     elif request.method == 'POST':
         form = forms.SignupForm(request.POST)
@@ -39,6 +43,7 @@ def register(request):
         raise Exception('Invalid request method')
 
 def services(request):
+    generate_services()
     return render(request, 'services.html')
 
 def logout_view(request):
@@ -51,8 +56,6 @@ def admin_dashboard(request):
 
 def payment(request):
     return render(request, 'payment.html')
-
-
 
 def add_service(request):
     return render(request, 'add-service.html')

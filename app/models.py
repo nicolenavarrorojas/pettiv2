@@ -45,6 +45,8 @@ class Service(models.Model):
         related_name='services'
     )
     image = models.ImageField(upload_to='service_images', null=True, blank=True)
+    upload_date = models.DateTimeField(auto_now_add=True)
+    update_date = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.title

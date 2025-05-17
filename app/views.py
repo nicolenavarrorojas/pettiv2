@@ -2,13 +2,17 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.contrib.auth import login, authenticate, logout
 from django.urls import reverse
-from app import forms
+from app import forms, models
 from app.fixtures import generate_services
 from app.utils import check_administrator
 
 def index(request):
     generate_services()
-    return render(request, 'index.html')
+    recent_services = models.Service.objects.all().order_by('-upload_date')[:3]
+    context = {
+        'recent_services': recent_services
+    }
+    return render(request,'index.html', context)
 
 def login_view(request):
     generate_services()
@@ -44,7 +48,11 @@ def register(request):
 
 def services(request):
     generate_services()
-    return render(request, 'services.html')
+    services = models.Service.objects.all()
+    context = {
+        'services': services
+    }
+    return render(request, 'services.html', context)
 
 def logout_view(request):
     logout(request)

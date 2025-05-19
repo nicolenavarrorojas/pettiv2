@@ -48,9 +48,14 @@ def register(request):
 
 def services(request):
     generate_services()
-    services = models.Service.objects.all()
+    service_type = request.GET.get('service_type', None)
+    if service_type in ['grooming', 'walking', 'sitting']:
+        services = models.Service.objects.filter(service_type=service_type)
+    else:
+        services = models.Service.objects.all()
     context = {
-        'services': services
+        'services': services,
+        'service_type': service_type
     }
     return render(request, 'services.html', context)
 

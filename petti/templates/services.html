@@ -37,28 +37,35 @@
                    class="search-input">
           </div>
           <div class="filter-buttons">
-            <button class="filter-button active" data-category="all">Todos</button>
-            <button class="filter-button" data-category="grooming">Estética</button>
-            <button class="filter-button" data-category="walking">Paseo</button>
-            <button class="filter-button" data-category="sitting">Cuidado</button>
+            <a href="{% url 'services' %}"
+               class="filter-button{% if service_type == None %} active{% endif %}"
+               data-category="all">Todos</a>
+            <a href="{% url 'services' %}?service_type=grooming"
+               class="filter-button{% if service_type == 'grooming' %} active{% endif %}"
+               data-category="grooming">Estética</a>
+            <a href="{% url 'services' %}?service_type=walking"
+               class="filter-button{% if service_type == 'walking' %} active{% endif %}"
+               data-category="walking">Paseo</a>
+            <a href="{% url 'services' %}?service_type=sitting"
+               class="filter-button{% if service_type == 'sitting' %} active{% endif %}"
+               data-category="sitting">Cuidado</a>
           </div>
         </div>
         <div class="services-grid">
           {% for service in services %}
-          <div class="service-card" data-category="grooming">
-            <div class="service-content">
-              <img src="{{ service.image.url }}" alt="Estética para perros" class="service-image-custom">
-
-              <h3 class="service-title">{{ service.title }}</h3>
-              <p class="service-description">
-                {{ service.description }}
-              </p>
-              <div class="service-footer">
-                <span class="service-price">${{ service.price }}</span>
-                <a href="{% url 'payment' %}?service=1" class="button small-button">Reservar ahora</a>
+            <div class="service-card" data-category="grooming">
+              <div class="service-content">
+                <img src="{{ service.image.url }}"
+                     alt="Estética para perros"
+                     class="service-image-custom">
+                <h3 class="service-title">{{ service.title }}</h3>
+                <p class="service-description">{{ service.description }}</p>
+                <div class="service-footer">
+                  <span class="service-price">${{ service.price }}</span>
+                  <a href="{% url 'payment' %}?service=1" class="button small-button">Reservar ahora</a>
+                </div>
               </div>
             </div>
-          </div>
           {% endfor %}
         </div>
         <div id="noResults" class="no-results" style="display: none;">
@@ -190,78 +197,10 @@
       </div>
     </footer>
     <script>
-        // Mobile menu toggle
-        document.querySelector('.mobile-menu-button').addEventListener('click', function() {
-            document.querySelector('.mobile-menu').classList.toggle('active');
-            this.classList.toggle('active');
-        });
-
-        // Filter functionality
-        const filterButtons = document.querySelectorAll('.filter-button');
-        const serviceCards = document.querySelectorAll('.service-card');
-        const searchInput = document.getElementById('serviceSearch');
-        const noResults = document.getElementById('noResults');
-        const resetFilters = document.getElementById('resetFilters');
-
-        let activeCategory = 'all';
-        let searchTerm = '';
-
-        function updateFilters() {
-            let visibleCount = 0;
-
-            serviceCards.forEach(card => {
-                const category = card.getAttribute('data-category');
-                const title = card.querySelector('.service-title').textContent.toLowerCase();
-                const description = card.querySelector('.service-description').textContent.toLowerCase();
-
-                const matchesCategory = activeCategory === 'all' || category === activeCategory;
-                const matchesSearch = title.includes(searchTerm) || description.includes(searchTerm);
-
-                if (matchesCategory && matchesSearch) {
-                    card.style.display = 'block';
-                    visibleCount++;
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-
-            if (visibleCount === 0) {
-                noResults.style.display = 'block';
-            } else {
-                noResults.style.display = 'none';
-            }
-        }
-
-        filterButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                this.classList.add('active');
-
-                activeCategory = this.getAttribute('data-category');
-                updateFilters();
-            });
-        });
-
-        searchInput.addEventListener('input', function() {
-            searchTerm = this.value.toLowerCase();
-            updateFilters();
-        });
-
-        resetFilters.addEventListener('click', function() {
-            activeCategory = 'all';
-            searchTerm = '';
-
-            searchInput.value = '';
-
-            filterButtons.forEach(btn => {
-                btn.classList.remove('active');
-                if (btn.getAttribute('data-category') === 'all') {
-                    btn.classList.add('active');
-                }
-            });
-
-            updateFilters();
-        });
-    </script>
-  </body>
+// Mobile menu toggle
+document.querySelector('.mobile-menu-button').addEventListener('click', function() {
+document.querySelector('.mobile-menu').classList.toggle('active');
+this.classList.toggle('active');
+});
+</body>
 </html>

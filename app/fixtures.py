@@ -1,4 +1,5 @@
 from app import models
+import sys
 
 
 def generate_partners():
@@ -25,10 +26,13 @@ def generate_partners():
     
 
 def generate_services():
+    if 'tests' in sys.argv:
+        return
+    
     generate_partners()
     services = [ 
         {
-            'service_type': 'grooming', 
+            'service_type': models.Service.GROOMING, 
             'title': 'Estética Premium para Mascotas', 
             'description':'Servicio profesional que incluye baño, corte de pelo, corte de uñas y limpieza de oídos.',
             'price': 18000,
@@ -36,7 +40,7 @@ def generate_services():
             'image': 'service_images/esteticaperros.jpg'
         },
         {
-            'service_type': 'grooming', 
+            'service_type': models.Service.GROOMING, 
             'title': 'Estética Básica', 
             'description':'Servicio básico de estética que incluye baño y cepillado.',
             'price': 12000,
@@ -44,7 +48,7 @@ def generate_services():
             'image': 'service_images/esteticabasica.jpg'
         },
         {
-            'service_type': 'walking', 
+            'service_type': models.Service.WALKING, 
             'title': 'Paseo Diario para Perros', 
             'description':'Paseos regulares para que tu perro se mantenga sano y feliz mientras estás ocupado.',
             'price': 10000,
@@ -52,7 +56,7 @@ def generate_services():
             'image': 'service_images/paseomascotas2.jpg'
         },
         {
-            'service_type': 'walking', 
+            'service_type': models.Service.WALKING, 
             'title': 'Paseo de Fin de Semana', 
             'description':'Paseos de fin de semana para tu perro mientras tú te diviertes.',
             'price': 8000,
@@ -60,7 +64,7 @@ def generate_services():
             'image': 'service_images/paseomascotas3.jpg'
         },
         {
-            'service_type': 'sitting', 
+            'service_type': models.Service.SITTING, 
             'title': 'Cuidado Nocturno de Mascotas', 
             'description':'Cuidado amoroso para tus mascotas en casa mientras estás fuera. Incluye alimentación, juegos y compañía.',
             'price': 28000,
@@ -68,7 +72,7 @@ def generate_services():
             'image': 'service_images/cuidadonocturno.jpg'
         },
         {
-            'service_type': 'sitting', 
+            'service_type': models.Service.SITTING, 
             'title': 'Cuidado durante Vacaciones', 
             'description':'Cuidado extendido para tus mascotas mientras estás de vacaciones. Visitas diarias, alimentación y atención.',
             'price': 35000,

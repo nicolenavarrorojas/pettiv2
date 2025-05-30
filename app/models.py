@@ -50,4 +50,24 @@ class Service(models.Model):
 
     def __str__(self):
         return self.title
+
     
+class Reservation(models.Model):
+    date = models.DateField()
+    time = models.TimeField()
+    duration = models.PositiveIntegerField(default=1)
+    service = models.ForeignKey(
+        Service,
+        on_delete=models.CASCADE,
+        related_name='reservations'
+    )
+    client = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='reservations'
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f'Reservation for {self.service.title} on {self.date} at {self.time} by {self.client.email}'

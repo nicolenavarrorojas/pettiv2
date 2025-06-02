@@ -1,5 +1,5 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth import login, authenticate, logout
 from django.urls import reverse
 from app import forms, models
@@ -70,7 +70,7 @@ def admin_dashboard(request):
 
 def create_reservation(request, service_id):
     context = {
-        'service': models.Service.objects.get(id=service_id)
+        'service': get_object_or_404(models.Service, id=service_id)
     }
     return render(request, 'create-reservation.html', context)
 

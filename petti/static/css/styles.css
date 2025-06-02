@@ -1018,12 +1018,7 @@ img {
 }
 
 .payment-section {
-  display: none;
   padding: var(--spacing-xl);
-}
-
-.payment-section.active {
-  display: block;
 }
 
 .payment-title {

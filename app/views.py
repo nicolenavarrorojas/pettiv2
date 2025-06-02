@@ -49,6 +49,7 @@ def register(request):
 def services(request):
     generate_services()
     service_type = request.GET.get('service_type', None)
+    search = request.GET.get('search', None)
     if service_type in ['grooming', 'walking', 'sitting']:
         services = models.Service.objects.filter(service_type=service_type)
     else:
@@ -66,6 +67,12 @@ def logout_view(request):
 @check_administrator
 def admin_dashboard(request):
     return render(request, 'admin-dashboard.html')
+
+def create_reservation(request, service_id):
+    context = {
+        'service': models.Service.objects.get(id=service_id)
+    }
+    return render(request, 'create-reservation.html', context)
 
 def payment(request):
     return render(request, 'payment.html')

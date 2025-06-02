@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servicios - Petti</title>
+    <title>Pago - Petti</title>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap"
           rel="stylesheet">
@@ -13,65 +13,84 @@
     <!-- Header (navbar)-->
     {% include "navbar.html" %}
     <!--BODY -->
-    <main class="main-content services-page">
+    <main class="main-content payment-page">
       <div class="container">
-        <h1 class="services-title">Encuentra el servicio perfecto para tu mascota</h1>
-        <div class="search-filter">
-          <div class="search-box">
-            <svg xmlns="http://www.w3.org/2000/svg"
-                 width="20"
-                 height="20"
-                 viewBox="0 0 24 24"
-                 fill="none"
-                 stroke="currentColor"
-                 stroke-width="2"
-                 stroke-linecap="round"
-                 stroke-linejoin="round"
-                 class="search-icon">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-            <input type="text"
-                   name="search"
-                   id="serviceSearch"
-                   placeholder="Buscar servicios..."
-                   class="search-input">
+        <div class="payment-process">
+          <div class="payment-steps">
+            <div class="payment-step active" data-step="1">
+              <div class="step-icon">
+                <!-- ícono calendario -->
+              </div>
+              <span class="step-label">Agenda</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="payment-step" data-step="2">
+              <div class="step-icon">
+                <!-- ícono tarjeta -->
+              </div>
+              <span class="step-label">Pago</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="payment-step" data-step="3">
+              <div class="step-icon">
+                <!-- ícono check -->
+              </div>
+              <span class="step-label">Confirmación</span>
+            </div>
           </div>
-          <div class="filter-buttons">
-            <a href="{% url 'services' %}"
-               class="filter-button{% if service_type == None %} active{% endif %}"
-               data-category="all">Todos</a>
-            <a href="{% url 'services' %}?service_type=grooming"
-               class="filter-button{% if service_type == 'grooming' %} active{% endif %}"
-               data-category="grooming">Estética</a>
-            <a href="{% url 'services' %}?service_type=walking"
-               class="filter-button{% if service_type == 'walking' %} active{% endif %}"
-               data-category="walking">Paseo</a>
-            <a href="{% url 'services' %}?service_type=sitting"
-               class="filter-button{% if service_type == 'sitting' %} active{% endif %}"
-               data-category="sitting">Cuidado</a>
-          </div>
-        </div>
-        <div class="services-grid">
-          {% for service in services %}
-            <div class="service-card" data-category="grooming">
-              <div class="service-content">
-                <img src="{{ service.image.url }}"
-                     alt="Estética para perros"
-                     class="service-image-custom">
-                <h3 class="service-title">{{ service.title }}</h3>
-                <p class="service-description">{{ service.description }}</p>
-                <div class="service-footer">
-                  <span class="service-price">${{ service.price }}</span>
-                  <a href="{% url 'create_reservation' service.id %}" class="button small-button">Reservar ahora</a>
+          <div class="payment-card">
+            <!-- Paso 1: Agenda -->
+            <div class="payment-section" id="scheduleSection">
+              <h2 class="payment-title">Agenda tu servicio</h2>
+              <div class="service-info" id="serviceInfo">
+                <div class="service-image">
+                  <img src="{{ service.image.url }}"
+                       alt="Servicio"
+                       id="serviceImg"
+                       class="service-img">
+                </div>
+                <div class="service-details">
+                  <h3 class="service-name" id="serviceName">{{ service.title }}</h3>
+                  <p class="service-price" id="serviceBasePrice">${{ service.price }}/hora</p>
                 </div>
               </div>
+              <form id="scheduleForm" class="schedule-form">
+                <div class="form-group">
+                  <label for="date" class="form-label">Selecciona la fecha</label>
+                  <input type="date" id="date" class="form-input" required>
+                </div>
+                <div class="form-group">
+                  <label for="time" class="form-label">Selecciona la hora</label>
+                  <input type="time" id="time" class="form-input" required>
+                </div>
+                <div class="form-group">
+                  <label for="hours" class="form-label">Duración (horas)</label>
+                  <select id="hours" class="form-input" required>
+                    <option value="1">1 hora</option>
+                    <option value="2">2 horas</option>
+                    <option value="3">3 horas</option>
+                    <option value="4">4 horas</option>
+                    <option value="5">5 horas</option>
+                  </select>
+                </div>
+                <div class="order-summary">
+                  <div class="order-total">
+                    <span class="total-label">Precio total:</span>
+                    <span class="total-amount" id="totalPrice">$35.00</span>
+                  </div>
+                </div>
+                <div class="form-actions">
+                  <button type="button"
+                          id="continueToPayment"
+                          class="button primary-button full-width">Continuar al pago</button>
+                </div>
+              </form>
             </div>
-          {% endfor %}
+          </div>
         </div>
-        <div id="noResults" class="no-results" style="display: none;">
-          <p class="no-results-text">No se encontraron servicios que coincidan con tus criterios.</p>
-          <button id="resetFilters" class="button primary-button">Restablecer filtros</button>
+        <div class="no-service" id="noServiceSelected" style="display: none;">
+          <p class="no-service-text">No se ha seleccionado ningún servicio.</p>
+          <a href="{% url 'services' %}" class="button primary-button">Ver servicios</a>
         </div>
       </div>
     </main>
@@ -198,10 +217,13 @@
       </div>
     </footer>
     <script>
-// Mobile menu toggle
-document.querySelector('.mobile-menu-button').addEventListener('click', function() {
-document.querySelector('.mobile-menu').classList.toggle('active');
-this.classList.toggle('active');
-});
-</body>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            document.querySelector('.mobile-menu-button').addEventListener('click', function() {
+                document.querySelector('.mobile-menu').classList.toggle('active');
+                this.classList.toggle('active');
+            });
+        });
+    </script>
+  </body>
 </html>

@@ -69,8 +69,33 @@ def admin_dashboard(request):
     return render(request, 'admin-dashboard.html')
 
 def create_reservation(request, service_id):
+    service = get_object_or_404(models.Service, id=service_id)
+
+    if request.method == 'POST':
+        print('POST request received for create_reservation')
+        print(request.POST)
+        post_data = request.POST.copy()
+        post_data['service'] = service_id
+        post_data['client'] = request.user.id 
+
+        form = forms.ReservationForm(post_data)
+        if form.is_valid():
+            print('Form is valid')
+            reservation = form.save()
+            print('reservation:')
+            print(reservation)
+            return HttpResponseRedirect(reverse('payment'))
+        else:
+            print('Form is invalid')
+            print(form.errors)
+            context = {
+                'service': service,
+                'form': form
+            }
+            return render(request, 'create-reservation.html', context)
+        
     context = {
-        'service': get_object_or_404(models.Service, id=service_id)
+        'service': service,
     }
     return render(request, 'create-reservation.html', context)
 

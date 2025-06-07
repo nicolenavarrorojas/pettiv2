@@ -142,6 +142,22 @@ def payment_success(request, reservation_id):
     }
     return render(request, 'payment-success.html', context)
 
+def get_reservations(request):
+    reservations = models.Reservation.objects.all()
+    reservations_data = []
+    for reservation in reservations:
+        reservations_data.append({
+            'id': reservation.id,
+            'date': reservation.date.strftime('%Y-%m-%d'),
+            'time': reservation.time.strftime('%H:%M:%S'),
+            'duration': reservation.duration,
+            'service': reservation.service.title,
+            'client': reservation.client.email,
+            'total': reservation.total,
+            'payed': reservation.payed
+        })
+    return JsonResponse(reservations_data, safe=False)
+
 def add_service(request):
     return render(request, 'add-service.html')
 

@@ -38,7 +38,7 @@ urlpatterns = [
     path('partner-profile-form/', views.partner_profile_form, name='partner_profile_form'),
     path('partner-profile/', views.partner_profile, name='partner_profile'),
     path('partner-public-view/', views.partner_public_view, name='partner_public_view'),
-    
+    path("api/get_reservations", views.get_reservations, name="get_reservations")
 ]
 
 if settings.DEBUG:

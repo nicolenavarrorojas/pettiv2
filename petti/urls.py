@@ -29,7 +29,8 @@ urlpatterns = [
     path('services/', views.services, name='services'),
     path('admin-dashboard/', views.admin_dashboard, name='admin_dashboard'),
     path('create-reservation/<int:service_id>', views.create_reservation, name='create_reservation'),
-    path('payment/<int:reservation_id>', views.payment, name='payment'),
+    path('create-reservation-and-payment/<int:service_id>', views.create_reservation_and_payment, name='create_reservation_and_payment'),
+    path('payment-success/<int:reservation_id>', views.payment_success, name='payment_success'),
     path('logout/', views.logout_view, name='logout'),
 
     path('add-service/', views.add_service, name='add_service'),

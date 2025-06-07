@@ -66,6 +66,8 @@ class Reservation(models.Model):
         on_delete=models.CASCADE,
         related_name='reservations'
     )
+    total = models.IntegerField(null=True, blank=True)
+    payed = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

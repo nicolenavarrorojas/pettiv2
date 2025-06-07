@@ -19,5 +19,6 @@ class ReservationForm(forms.ModelForm):
             'time',
             'duration',
             'service',
-            'client'
+            'client',
+            'total'
         ]

@@ -39,61 +39,40 @@
             </div>
           </div>
           <div class="payment-card">
-            <!-- Paso 1: Agenda -->
-            <div class="payment-section" id="scheduleSection">
-              <h2 class="payment-title">Agenda tu servicio</h2>
-              <div class="service-info" id="serviceInfo">
-                <div class="service-image">
-                  <img src="{{ service.image.url }}"
-                       alt="Servicio"
-                       id="serviceImg"
-                       class="service-img">
-                </div>
-                <div class="service-details">
-                  <h3 class="service-name" id="serviceName">{{ service.title }}</h3>
-                  <p class="service-price" id="serviceBasePrice">
-                    $<span id="servicePrice">{{ service.price }}<span>/hora
+            <!-- Paso 3: Confirmación -->
+            <div class="payment-section" id="confirmationSection">
+              <div class="confirmation-content">
+                <div class="confirmation-status success-status"
+                     id="paymentSuccess">
+                  <div class="success-icon">
+                    <!-- ícono de éxito -->
+                  </div>
+                  <h2 class="confirmation-title">¡Pago exitoso!</h2>
+                  <p class="confirmation-message" id="confirmationMessage">
+                    Tu reserva para {{ reservation.service.title }} ha sido confirmada.
                   </p>
+                  <div class="booking-details">
+                    <h3 class="booking-title">Detalles de la reserva</h3>
+                    <div class="booking-info">
+                      <div class="booking-item">
+                        <!-- ícono calendario -->
+                        <span id="confirmationDate">Fecha: {{ reservation.date }} {{ reservation.time }}</span>
+                      </div>
+                      <div class="booking-item">
+                        <!-- ícono reloj -->
+                        <span id="confirmationTime">Duración: {{ reservation.duration }} hora/s.</span>
+                      </div>
+                      <div class="booking-item total-price">
+                        <!-- ícono tarjeta -->
+                        <span id="confirmationTotal">Total: ${{ reservation.total }}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <a href="{% url 'index' %}" class="button primary-button">Volver al inicio</a>
                 </div>
               </div>
-              <form id="scheduleForm" method="post" class="schedule-form">
-                {% csrf_token %}
-                <div class="form-group">
-                  <label for="date" class="form-label">Selecciona la fecha</label>
-                  <input type="date" id="date" name="date" class="form-input" required>
-                </div>
-                <div class="form-group">
-                  <label for="time" class="form-label">Selecciona la hora</label>
-                  <input type="time" id="time" name="time" class="form-input" required>
-                </div>
-                <div class="form-group">
-                  <label for="hours" class="form-label">Duración (horas)</label>
-                  <select id="hours" name="duration" class="form-input" required>
-                    <option value="1">1 hora</option>
-                    <option value="2">2 horas</option>
-                    <option value="3">3 horas</option>
-                    <option value="4">4 horas</option>
-                    <option value="5">5 horas</option>
-                  </select>
-                </div>
-                <div class="order-summary">
-                  <div class="order-total">
-                    <span class="total-label">Precio total:</span>
-                    <span class="total-amount" id="totalPrice">${{ service.price }}</span>
-                  </div>
-                </div>
-                <div class="form-actions">
-                  <button type="submit"
-                          id="continueToPayment"
-                          class="button primary-button full-width">Continuar al pago</button>
-                </div>
-              </form>
             </div>
           </div>
-        </div>
-        <div class="no-service" id="noServiceSelected" style="display: none;">
-          <p class="no-service-text">No se ha seleccionado ningún servicio.</p>
-          <a href="{% url 'services' %}" class="button primary-button">Ver servicios</a>
         </div>
       </div>
     </main>
@@ -220,76 +199,11 @@
       </div>
     </footer>
     <script>
-        let servicePrice = parseFloat(document.getElementById('servicePrice').textContent);
-        let totalPrice = 0;
         document.addEventListener('DOMContentLoaded', function() {
             // Mobile menu toggle
             document.querySelector('.mobile-menu-button').addEventListener('click', function() {
                 document.querySelector('.mobile-menu').classList.toggle('active');
                 this.classList.toggle('active');
-            });
-
-            document.getElementById('hours').addEventListener('change', function() {
-                hours = parseInt(this.value);
-                totalPrice = servicePrice * hours;
-                document.getElementById('totalPrice').textContent = `$${totalPrice}`;
-            });
-
-            document.getElementById('scheduleForm').addEventListener('submit', function(event) {
-                event.preventDefault();
-                const date = document.getElementById('date').value;
-                const time = document.getElementById('time').value;
-                if (!date || !time) {
-                    alert('Por favor, selecciona una fecha y hora válidas.');
-                    return;
-                }
-                const hours = parseInt(document.getElementById('hours').value);
-                if (isNaN(hours) || hours <= 0) {
-                    alert('Por favor, selecciona una duración válida.');
-                    return;
-                }
-
-                console.log({
-                    date: date,
-                    time: time,
-                    duration: hours,
-                })
-
-                const urlPath = window.location.pathname;
-                const serviceId = urlPath.split('/').pop();
-                console.log('serviceId:', serviceId);
-
-                fetch(`/create-reservation-and-payment/${serviceId}`, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-CSRFToken': document.querySelector('input[name="csrfmiddlewaretoken"]').value
-                        },
-                        body: JSON.stringify({
-                            date: date,
-                            time: time,
-                            duration: hours
-                        })
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        console.log('data:', data);
-                        const form = document.createElement('form');
-                        form.method = 'POST';
-                        form.action = data.url_webpay;
-                        const tokenInput = document.createElement("input");
-                        tokenInput.type = "hidden";
-                        tokenInput.name = "token_ws";
-                        tokenInput.value = data.token;
-                        form.appendChild(tokenInput);
-                        document.body.appendChild(form);
-                        form.submit();
-
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        alert('Ocurrió un error al crear la reserva. Por favor, inténtalo de nuevo más tarde.');
-                    })
             });
         });
     </script>

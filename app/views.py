@@ -84,14 +84,14 @@ def create_reservation(request, service_id):
             reservation = form.save()
             print('reservation:')
             print(reservation)
-            return HttpResponseRedirect(reverse('payment'))
+            return HttpResponseRedirect(reverse('payment', args=[reservation.id]))
         else:
             print('Form is invalid')
             print(form.errors)
             context = {
                 'service': service,
                 'form': form
-            }
+            }    
             return render(request, 'create-reservation.html', context)
         
     context = {
@@ -99,7 +99,8 @@ def create_reservation(request, service_id):
     }
     return render(request, 'create-reservation.html', context)
 
-def payment(request):
+def payment(request, reservation_id):
+    reservation = get_object_or_404(models.Reservation, id=reservation_id)
     return render(request, 'payment.html')
 
 def add_service(request):
